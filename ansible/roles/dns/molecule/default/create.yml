@@ -102,4 +102,4 @@
       register: docker_jobs
       until: docker_jobs.finished
       retries: 300
-with_items: "{{ server.results }}"
+      with_items: "{{ server.results }}"

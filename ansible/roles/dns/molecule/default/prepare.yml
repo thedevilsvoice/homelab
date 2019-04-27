@@ -2,7 +2,5 @@
 - name: Prepare
   hosts: all
   gather_facts: false
-
-  #vars:
-  
-  #tasks:
+  # vars:
+  # tasks:

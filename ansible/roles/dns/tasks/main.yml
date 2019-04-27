@@ -13,4 +13,4 @@
     - bind9
     - bind9utils
     - dnsutils
-tags: admin
+  tags: admin

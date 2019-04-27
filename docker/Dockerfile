@@ -17,4 +17,4 @@ RUN \
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 93C4A3FD7BB9C367;\
 apt-get -y update; \
 pip install ansible; \
-pip install molecule
+pip install molecule['docker']

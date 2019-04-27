@@ -1,9 +1,9 @@
 ---
 dependency:
   name: galaxy
-  options: 
-  ignore-certs: true
-  ignore-errors: true
+  options:
+    ignore-certs: true
+    ignore-errors: true
 driver:
   name: docker
 lint:
@@ -27,14 +27,14 @@ provisioner:
   name: ansible
   lint:
     name: ansible-lint
-  ansible: 
+  ansible:
     sudo: false
   playbooks:
     create: create.yml
     prepare: prepare.yml
   log: true
 
-scenario: 
+scenario:
   name: default
   test_sequence:
     - destroy
@@ -48,3 +48,4 @@ verifier:
   name: goss
   lint:
     name: yamllint
+    
