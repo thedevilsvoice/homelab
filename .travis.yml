@@ -9,5 +9,5 @@ install:
   - pip install molecule
   # - pip install required driver (e.g. docker, python-vagrant, shade, boto, apache-libcloud)
 script:
-  - cd ansible/roles/dns molecule lint
-  - cd ansible/roles/pi molecule lint
+  - cd ansible/roles/dns && molecule lint
+  - cd ansible/roles/pi && molecule lint
