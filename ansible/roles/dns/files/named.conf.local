@@ -1,0 +1,10 @@
+# /etc/bind/named.conf.local
+
+zone "home.lab" IN {
+  type master;
+  file "/etc/bind/db.home.lab";
+};
+zone "0.10.10.in-addr.arpa" {
+  type master;
+  file "/etc/bind/db.rev.0.10.10.in-addr.arpa";
+};

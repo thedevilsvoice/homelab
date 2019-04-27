@@ -1,0 +1,16 @@
+---
+- name: 'Update APT package cache'
+  apt:
+    update_cache: yes
+    upgrade: safe
+  tags: admin
+
+- name: Install DNS admin tools
+  apt:
+    package: "{{ item }}"
+    state: installed
+  with_items:
+    - bind9
+    - bind9utils
+    - dnsutils
+tags: admin
