@@ -48,4 +48,3 @@ verifier:
   name: goss
   lint:
     name: yamllint
-    
