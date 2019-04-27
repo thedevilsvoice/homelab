@@ -1,4 +1,1 @@
 ansible
-jinja2
-pyyaml
-paramiko
