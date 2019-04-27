@@ -1,4 +1,4 @@
-.PHONY: ansible
+.PHONY: ansible docker
 
 REQS := requirements.txt
 
@@ -17,5 +17,13 @@ export PRINT_HELP_PYSCRIPT
 help: 
 	@python -c "$$PRINT_HELP_PYSCRIPT" < $(MAKEFILE_LIST)
 
+docker: ## build docker container for testing
+	@echo "Building test env with docker-compose"
+	docker-compose -f docker/docker-compose.yml build homelab
+	@docker-compose -f docker/docker-compose.yml run homelab /bin/bash
+
 python: ## setup python3
-	pip3 install -rrequirements.txt
+	pip3 install -rrequirements/requirements.txt
+
+test: python ## run tests in container
+	pip3 install -rrequirements/requirements-test.txt

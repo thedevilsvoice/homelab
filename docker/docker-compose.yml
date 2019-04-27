@@ -1,0 +1,8 @@
+version: '3'
+services: 
+  homelab:
+    volumes:
+      - .:/tmp/workspace
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
