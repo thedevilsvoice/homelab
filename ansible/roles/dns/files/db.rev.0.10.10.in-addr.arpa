@@ -1,0 +1,12 @@
+# /etc/bind/db.rev.1.168.192.in-addr.arpa
+
+@ IN SOA labgate.home.lab. hostmaster.home.lab. (
+        2017081401 ; serial
+        8H ; refresh
+        4H ; retry
+        4W ; expire
+        1D ; minimum
+)
+        IN NS labgate.home.lab.
+253.15         IN PTR labgate.home.lab.
+200.8        IN PTR odroid-c1.home.lab.
