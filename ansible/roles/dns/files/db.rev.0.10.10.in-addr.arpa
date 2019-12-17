@@ -8,5 +8,5 @@
         1D ; minimum
 )
         IN NS labgate.home.lab.
-253.15         IN PTR labgate.home.lab.
+254.15         IN PTR labgate.home.lab.
 200.8        IN PTR odroid-c1.home.lab.
