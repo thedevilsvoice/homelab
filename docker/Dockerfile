@@ -8,7 +8,7 @@ ENV container homelab
 ENV MY_USER franklin
 ENV MY_HOME /home/${MY_USER}
 ENV DEBIAN_FRONTEND noninteractive
-ENV PYTHON_PATH=/usr/local/lib/python3.7/site-packages
+ENV PYTHONPATH=/usr/local/lib/python3.7/site-packages
 
 ADD . /tmp/project
 WORKDIR /tmp/project

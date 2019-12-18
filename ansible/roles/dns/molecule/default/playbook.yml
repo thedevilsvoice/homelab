@@ -4,3 +4,5 @@
   become: true
   roles:
     - role: dns
+  vars: 
+    molecule_no_log: false

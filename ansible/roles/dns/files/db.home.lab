@@ -9,5 +9,5 @@ home.lab. IN SOA labgate.home.lab. hostmaster.home.lab. (
 home.lab.       IN NS raspberry.home.lab.
 #home.lab.       IN MX 10 raspberry.home.lab.
 localhost       IN A 127.0.0.1
-labgate         IN A 10.10.15.253
+labgate         IN A 10.10.15.254
 odroid-c1       IN A 10.10.8.200

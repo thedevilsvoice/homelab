@@ -6,7 +6,8 @@ services:
 before_install:
   - sudo apt-get -qq update
 install:
-  - pip install molecule
+  - pip install -r requirements/requirements-test.txt
+  - pip install -r requirements/requirements.txt
   # - pip install required driver (e.g. docker, python-vagrant, shade, boto, apache-libcloud)
 script:
   - cd ansible/roles/dns && molecule syntax && cd -
