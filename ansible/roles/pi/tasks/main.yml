@@ -11,8 +11,8 @@
 - name: 'Upgrade APT to the lastest packages'
   action: apt upgrade=safe
 
-- name: 'Reboot'
-  shell: sleep 2 && reboot
-  async: 1
-  poll: 0
-  ignore_errors: true
+#- name: 'Reboot'
+#  shell: sleep 2 && reboot
+#  async: 1
+#  poll: 0
+#  ignore_errors: true
