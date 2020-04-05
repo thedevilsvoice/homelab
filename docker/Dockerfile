@@ -15,6 +15,13 @@ WORKDIR /tmp/project
 
 RUN \
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 93C4A3FD7BB9C367;\
-apt-get -y update; \
-pip install ansible; \
-pip install molecule['docker']
+apt update; \
+apt install -y sshpass; \
+python -m pip install ansible; \
+python -m pip install molecule['docker']
+
+RUN \
+mkdir /etc/ansible; \
+cp /tmp/project/ansible/hosts /etc/ansible; \
+cp /tmp/project/ansible/ansible.cfg /etc/ansible
+#ansbile raspis -m ping

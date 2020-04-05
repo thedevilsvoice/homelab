@@ -8,7 +8,7 @@
 - name: 'Update APT package cache'
   action: apt update_cache=yes
 
-- name: 'Upgrade APT to the lastest packages'
+- name: 'Upgrade APT to the latest packages'
   action: apt upgrade=safe
 
 #- name: 'Reboot'
