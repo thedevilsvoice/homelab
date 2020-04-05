@@ -1,6 +1,6 @@
 # homelab
 
-[![Build Status](https://travis-ci.org/hotpeppersec/homelab.svg?branch=master)](https://travis-ci.org/hotpeppersec/homelab)
+[![Build Status](https://travis-ci.com/hotpeppersec/homelab.svg?branch=master)](https://travis-ci.com/hotpeppersec/homelab)
 
 ## setup
 

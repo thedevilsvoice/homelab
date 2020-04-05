@@ -4,13 +4,8 @@ dependency:
   options:
     ignore-certs: true
     ignore-errors: true
-
 driver:
   name: docker
-
-lint:
-  name: yamllint
-
 platforms:
   - name: homelab
     hostname: franklin-homelab
@@ -25,18 +20,14 @@ platforms:
         aliases:
           - "franklin-homelab"
     purge_networks: true
-
 provisioner:
   name: ansible
-  lint:
-    name: ansible-lint
   ansible:
     sudo: false
   playbooks:
     create: create.yml
     prepare: prepare.yml
   log: true
-
 scenario:
   name: default
   test_sequence:
@@ -48,6 +39,6 @@ scenario:
     - verify
 
 verifier:
-  name: goss
-  lint:
-    name: yamllint
+  name: testinfra
+  env:
+    PYTHONWARNINGS: "ignore:.*U.*mode is deprecated:DeprecationWarning"
