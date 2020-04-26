@@ -4,11 +4,10 @@ language: python
 services:
   - docker
 before_install:
-  - sudo apt-get -qq update
+  - sudo apt -qq update
 install:
-  - pip install -r python/requirements-test.txt
-  - pip install -r python/requirements.txt
-  # - pip install required driver (e.g. docker, python-vagrant, shade, boto, apache-libcloud)
+  - python -m pip install -r python/requirements-test.txt
+  - python -m pip install -r python/requirements.txt
 script:
   - cd ansible/roles/dns && molecule syntax && cd -
   - cd ansible/roles/pi && molecule syntax && cd -
