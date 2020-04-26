@@ -1,4 +1,4 @@
-FROM python:3.8.0b1-stretch
+FROM python:3.8.1-buster
 #FROM debian:latest
 #FROM quay.io/ansible/molecule:2.20
 

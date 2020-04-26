@@ -11,6 +11,14 @@
 - name: 'Upgrade APT to the latest packages'
   action: apt upgrade=safe
 
+- name: ntp is running
+  action: service name=ntp state=started
+
+- name: configure ntp
+  action: template src=ntp.conf.j2 dest=/etc/ntp.conf
+  notify:
+  - restart ntp
+
 #- name: 'Reboot'
 #  shell: sleep 2 && reboot
 #  async: 1
