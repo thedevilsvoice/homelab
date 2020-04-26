@@ -1,8 +1,8 @@
 [raspis]
-10.0.0.86
-10.0.0.93
-music ansible_host=10.0.0.100 ansible_user=pi 
-raspi4-a ansible_host=10.0.0.195 ansible_user=pi
+10.0.0.86 ansible_user='pi' 
+10.0.0.93 ansible_user='pi'
+music ansible_host='10.0.0.100' ansible_user='pi' 
+raspi4-a ansible_host='10.0.0.195' ansible_user='pi'
 
 [beaglebone]
 10.0.0.250
