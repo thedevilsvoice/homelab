@@ -3,7 +3,7 @@ services:
   homelab:
     hostname: homelab-docker
     volumes:
-      - .:/tmp/workspace
+      - ..:/root
     build:
       context: ..
       dockerfile: docker/Dockerfile
