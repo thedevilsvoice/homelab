@@ -5,3 +5,10 @@
     - pi
   remote_user: pi
   become: yes
+- name: Raspi Cluster configuration
+  hosts: cluster
+  roles:
+    - pi
+    - cluster
+  remote_user: pi
+  become: yes
