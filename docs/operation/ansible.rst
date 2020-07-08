@@ -9,6 +9,13 @@ Scan subnet for raspis
 
     nmap -sn 10.0.0.0/24
 
+Install Ansible
+---------------
+
+.. code-block:: bash
+
+    sudo apt install -y ansible sshpass
+
 SSH Setup
 ---------
 
