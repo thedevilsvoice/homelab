@@ -9,15 +9,3 @@
 - name: 'Upgrade APT to the latest packages'
   apt: 
     upgrade: safe
-
-- name: Install NTP daemon
-  apt:
-    name: ntp
-    state: latest
-
-- name: ntp is running
-  action: service name=ntp state=started
-
-- name: configure ntp
-  action: template src=ntp.conf.j2 dest=/etc/ntp.conf
-  notify: "restart ntp service"

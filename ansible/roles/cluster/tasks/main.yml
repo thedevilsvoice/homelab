@@ -1,27 +1,9 @@
 ---
-- name: use arptables-legacy
-  alternatives:
-    name: arptables
-    path: /usr/sbin/arptables-legacy
-  failed_when: false
+- name: Firewall setup for Raspis
+  include: firewall.yml
 
-- name: use ebtables-legacy
-  alternatives:
-    name: ebtables
-    path: /usr/sbin/ebtables-legacy
-  failed_when: false
-
-- name: use iptables-legacy
-  alternatives:
-    name: iptables
-    path: /usr/sbin/iptables-legacy
-  failed_when: false
-
-- name: use ip6tables-legacy
-  alternatives:
-    name: ip6tables
-    path: /usr/sbin/ip6tables-legacy
-  failed_when: false
+- name: Include docker setup for Raspis
+  include: docker.yml
 
 - name: add apt-key for k8s
   apt_key:
@@ -32,7 +14,14 @@
   copy:
     content: "deb https://apt.kubernetes.io/ kubernetes-xenial main\n"
     dest: /etc/apt/sources.list.d/kubernetes.list
-  notify: apt-get update
+#  notify: apt-get update
+
+- name: 'Update APT package cache'
+  apt:
+    name: "*"
+    update_cache: yes
+    force_apt_get: yes
+    cache_valid_time: 3600
 
 - meta: flush_handlers
 - name: install k8s
@@ -42,6 +31,7 @@
       - "kubeadm={{ k8s_version }}"
       - "kubectl={{ k8s_version }}"
       - "kubelet={{ k8s_version }}"
+    force_apt_get: yes
     update_cache: yes
 
 - name: hold k8s updates

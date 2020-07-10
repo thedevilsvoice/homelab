@@ -7,3 +7,5 @@ sudo route del -net 0.0.0.0 gw 10.10.15.254
 ansible cluster -m ping
 
 ansible cluster -a 'sudo route del -net 0.0.0.0 gw 10.10.15.254'
+
+ansible-playbook playbook.yml -i hosts --become -e 'ansible_python_interpreter=/usr/bin/python3'
