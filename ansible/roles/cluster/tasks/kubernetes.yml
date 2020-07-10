@@ -1,0 +1,59 @@
+---
+- name: add apt-key for k8s
+  apt_key:
+    id: 6A030B21BA07F4FB
+    url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+
+- name: add apt-repository for k8s
+  copy:
+    content: "deb https://apt.kubernetes.io/ kubernetes-xenial main\n"
+    dest: /etc/apt/sources.list.d/kubernetes.list
+#  notify: apt-get update
+
+- name: 'Update APT package cache'
+  apt:
+    name: "*"
+    update_cache: yes
+    force_apt_get: yes
+    cache_valid_time: 3600
+
+- meta: flush_handlers
+- name: install k8s
+  apt:
+    name:
+      - kubernetes-cni
+      - kubeadm
+      - kubectl
+      - kubelet
+    force_apt_get: yes
+    update_cache: yes
+
+- name: hold k8s updates
+  dpkg_selections:
+    name: "{{ item }}"
+    selection: hold
+  with_items:
+    - kubeadm
+    - kubectl
+    - kubelet
+    - kubernetes-cni
+
+# https://opensource.com/article/20/6/kubernetes-raspberry-pi
+- name: 'Kubernetes needs iptables to be configured to see bridged network traffic'
+  copy:
+    src: k8s.conf
+    dest: /etc/sysctl.d/k8s.conf
+    mode: 0664
+
+- name: 'Check if swap is configured'
+  stat:
+    path: /etc/dphys-swapfile 
+  register: xx
+
+- name: 'Disable swap on node'
+  shell: |
+    dphys-swapfile swapoff
+    dphys-swapfile uninstall
+    update-rc.d dphys-swapfile remove
+    apt purge -y dphys-swapfile
+  when: xx.stat.exists

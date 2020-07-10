@@ -5,41 +5,5 @@
 - name: Include docker setup for Raspis
   include: docker.yml
 
-- name: add apt-key for k8s
-  apt_key:
-    id: 6A030B21BA07F4FB
-    url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
-
-- name: add apt-repository for k8s
-  copy:
-    content: "deb https://apt.kubernetes.io/ kubernetes-xenial main\n"
-    dest: /etc/apt/sources.list.d/kubernetes.list
-#  notify: apt-get update
-
-- name: 'Update APT package cache'
-  apt:
-    name: "*"
-    update_cache: yes
-    force_apt_get: yes
-    cache_valid_time: 3600
-
-- meta: flush_handlers
-- name: install k8s
-  apt:
-    name:
-      - "kubernetes-cni={{ kubernetes_cni_version }}"
-      - "kubeadm={{ k8s_version }}"
-      - "kubectl={{ k8s_version }}"
-      - "kubelet={{ k8s_version }}"
-    force_apt_get: yes
-    update_cache: yes
-
-- name: hold k8s updates
-  dpkg_selections:
-    name: "{{ item }}"
-    selection: hold
-  with_items:
-    - kubeadm
-    - kubectl
-    - kubelet
-    - kubernetes-cni
+- name: Install Kuberbnetes
+  include: kubernetes.yml

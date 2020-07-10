@@ -25,6 +25,13 @@
     force: true
     install_recommends: "{{ docker_install_recommends }}"
 
+# https://opensource.com/article/20/6/kubernetes-raspberry-pi
+- name: 'change the default cgroups driver Docker uses from cgroups to systemd'
+  copy:
+    src: daemon.json
+    dest: /etc/docker/daemon.json
+    mode: 0664
+
 - name: Ensure Docker is started.
   service:
     name: docker
