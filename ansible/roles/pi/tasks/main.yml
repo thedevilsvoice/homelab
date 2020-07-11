@@ -1,26 +1,9 @@
 ---
-# - name: 'Configure WIFI'
-#  copy:
-#    src: wpa_supplicant.conf
-#    dest:/etc/wpa_supplicant/wpa_supplicant.conf
-#    mode=0600
+#- name: Include package setup for Raspis
+#  include: packages.yml
 
-- name: 'Update APT package cache'
-  action: apt update_cache=yes
+- name: Setup NTP
+  include: ntp.yml
 
-- name: 'Upgrade APT to the latest packages'
-  action: apt upgrade=safe
-
-- name: ntp is running
-  action: service name=ntp state=started
-
-- name: configure ntp
-  action: template src=ntp.conf.j2 dest=/etc/ntp.conf
-  notify:
-  - restart ntp
-
-#- name: 'Reboot'
-#  shell: sleep 2 && reboot
-#  async: 1
-#  poll: 0
-#  ignore_errors: true
+- name: setup Python3
+  include: python3.yml

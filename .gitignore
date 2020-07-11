@@ -1,3 +1,5 @@
 .ansible
 .bash_history
 .ssh
+
+ansible/playbook.retry

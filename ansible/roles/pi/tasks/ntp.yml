@@ -1,0 +1,13 @@
+---
+- name: Install NTP daemon
+  apt:
+    name: ntp
+    state: latest
+
+# https://www.pool.ntp.org/en/use.html
+- name: configure ntp
+  action: template src=ntp.conf.j2 dest=/etc/ntp.conf
+  notify: "restart ntp service"
+
+- name: ntp is running
+  action: service name=ntp state=started
