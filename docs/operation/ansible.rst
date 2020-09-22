@@ -34,4 +34,6 @@ SSH Setup
 
     ansible --list-hosts cluster
     ansible cluster -m ping
-    ansible cluster -a 'sudo apt update && sudo apt -y upgrade' 
+    ansible cluster -a 'sudo apt update && sudo apt -y upgrade'
+    ansible cluster -a 'sudo kubectl get nodes'
+    ansible cluster -a 'sudo kubectl get namespaces'
