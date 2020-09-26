@@ -1,6 +1,8 @@
 .. code-block:: bash
 
-    kubectl get nodes
+    ssh-add ~/.ssh/id_rsa
+    ssh pi@node0
+    sudo kubectl get nodes
     kubectl get namespaces
     kubectl create namespace kube-verify
     kubectl get namespaces

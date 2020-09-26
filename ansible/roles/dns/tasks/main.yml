@@ -7,10 +7,6 @@
 
 - name: Install DNS admin tools
   apt:
-    package: "{{ item }}"
-    state: installed
-  with_items:
-    - bind9
-    - bind9utils
-    - dnsutils
+    package: ['bind9', 'bind9utils', 'dnsutils']
+    state: latest
   tags: admin

@@ -1,0 +1,9 @@
+---
+- name: Install packages
+  include: packages.yml
+
+- name: "Create /etc/ldap/schema folder"
+  file:
+    path: "/etc/dap/schema"
+    owner: "root"
+    state: directory

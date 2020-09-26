@@ -10,4 +10,4 @@ home.lab.       IN NS raspberry.home.lab.
 #home.lab.       IN MX 10 raspberry.home.lab.
 localhost       IN A 127.0.0.1
 labgate         IN A 10.10.15.254
-odroid-c1       IN A 10.10.8.200
+odroid-c1       IN A 10.10.12.254

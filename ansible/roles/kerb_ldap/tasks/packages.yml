@@ -1,0 +1,16 @@
+---
+- name: Install krb5-kdc-ldap 
+  apt:
+    name: krb5-kdc-ldap
+    state: latest
+
+- name: Install krb5-admin-server
+  apt:
+    name: krb5-admin-server
+    state: latest
+
+- name: Install LDAP tools
+  apt:
+    package: ['schema2ldif', 'ldap-utils']
+    state: latest
+  tags: admin

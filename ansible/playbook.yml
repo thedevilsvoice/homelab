@@ -1,10 +1,12 @@
 ---
-- name: Ansible Playbook for configuring brand new Raspberry Pi
-  hosts: raspi
+- name: Ansible Playbook for ODroid C1+
+  hosts: odroid-c1
   roles:
-    - pi
-  remote_user: pi
+    - dns
+    - kerb_ldap
+  remote_user: root
   become: yes
+
 - name: Raspi Cluster configuration
   hosts: cluster
   roles:
