@@ -10,3 +10,17 @@
     package: ['bind9', 'bind9utils', 'dnsutils']
     state: latest
   tags: admin
+
+- name: "Create /etc/bind folder"
+  file:
+    path: "/etc/bind"
+    owner: "root"
+    state: directory
+
+- name: 'Copy BIND files'
+  copy:
+    src: "{{ item }}"
+    dest: /etc/bind
+    mode: 0664
+  with_items:
+    - bind

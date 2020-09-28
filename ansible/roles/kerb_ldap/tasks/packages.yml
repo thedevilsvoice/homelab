@@ -11,6 +11,8 @@
 
 - name: Install LDAP tools
   apt:
-    package: ['schema2ldif', 'ldap-utils']
+    package: ['slapd', 'schema2ldif', 'ldap-utils']
     state: latest
   tags: admin
+
+  # ldap-schema-manager -i kerberos.schema

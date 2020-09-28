@@ -4,6 +4,6 @@
 
 - name: "Create /etc/ldap/schema folder"
   file:
-    path: "/etc/dap/schema"
+    path: "/etc/ldap/schema"
     owner: "root"
     state: directory
