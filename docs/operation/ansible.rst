@@ -33,5 +33,6 @@ SSH Setup
 .. code-block:: bash
 
     ansible --list-hosts cluster
-    ansible cluster -m ping
-    ansible cluster -a 'sudo apt update && sudo apt -y upgrade' 
+    ansible cluster -m -e 'ansible_python_interpreter=/usr/bin/python3' ping
+    ansible cluster -a 'sudo apt update'
+    ansible cluster -a 'sudo apt -y upgrade'

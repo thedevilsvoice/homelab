@@ -7,10 +7,20 @@
 
 - name: Install DNS admin tools
   apt:
-    package: "{{ item }}"
-    state: installed
-  with_items:
-    - bind9
-    - bind9utils
-    - dnsutils
+    package: ['bind9', 'bind9utils', 'dnsutils']
+    state: latest
   tags: admin
+
+- name: "Create /etc/bind folder"
+  file:
+    path: "/etc/bind"
+    owner: "root"
+    state: directory
+
+- name: 'Copy BIND files'
+  copy:
+    src: "{{ item }}"
+    dest: /etc
+    mode: 0664
+  with_items:
+    - bind

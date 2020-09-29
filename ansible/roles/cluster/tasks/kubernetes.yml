@@ -57,3 +57,11 @@
     update-rc.d dphys-swapfile remove
     apt purge -y dphys-swapfile
   when: xx.stat.exists
+
+- name: 'Append the cgroups and swap options to the kernel command line'
+  copy:
+    src: cmdline.txt
+    dest: /boot/cmdline.txt
+    mode: 0755
+
+# curl -sSL https://raw.githubusercontent.com/coreos/flannel/v0.12.0/Documentation/kube-flannel.yml | kubectl apply -f -
