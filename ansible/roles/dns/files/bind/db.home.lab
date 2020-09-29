@@ -1,17 +1,25 @@
-# /etc/bind/db.home.lab
-lab.bitsmasher.net. IN SOA odroid-c1.lab.bitsmasher.net hostmaster.lab.bitsmasher.net (
-       2020092601 ; serial
+$TTL    10800
+@ IN SOA odroid-c1.lab.bitsmasher.net. root.lab.bitsmasher.net (
+       2020092604 ; serial
         8H ; refresh
         4H ; retry
         4W ; expire
         1D ; minimum
-    )
-lab.bitsmasher.net       IN NS odroid-c1.lab.bitsmasher.net
-localhost       IN A 127.0.0.1
+        ) ;
+;Name Server Information
+@               IN NS odroid-c1.lab.bitsmasher.net.
+
+;IP address of Your Domain Name Server(DNS)
+odroid-c1       IN A 10.10.12.254
+
+;A Record for Host names
 node0           IN A 10.10.12.0
 node1           IN A 10.10.12.1
 node2           IN A 10.10.12.2
 node3           IN A 10.10.12.3
 lanparty        IN A 10.10.12.7
-odroid-c1       IN A 10.10.12.254
+grimoire        IN A 10.10.12.8
 labgate         IN A 10.10.15.254
+
+;CNAME Record
+dns             IN CNAME odroid-c1.lab.bitsmasher.net.

@@ -1,18 +1,22 @@
-# /etc/bind/db.rev.1.168.192.in-addr.arpa
-
+$TTL 1D
 @ IN SOA odroid-c1.lab.bitsmasher.net hostmaster.lab.bitsmasher.net. (
-        2020092601 ; serial
+        2020092602 ; serial
         8H ; refresh
         4H ; retry
         4W ; expire
-        1D ; minimum
-)
-        IN NS labgate.home.lab.
+        1D) ; minimum
+
+@ IN NS odroid-c1.lab.bitsmasher.net.
+lab.bitsmasher.net. IN NS odroid-c1.lab.bitsmasher.net.
+
+;Reverse Lookup for Your DNS Server
+254.12          IN PTR odroid-c1.lab.bitsmasher.net.
+
+;PTR Record IP address to HostName
 0.12            IN PTR node0.lab.bitsmasher.net.
 1.12            IN PTR node1.lab.bitsmasher.net.
 2.12            IN PTR node2.lab.bitsmasher.net.
 3.12            IN PTR node3.lab.bitsmasher.net.
 7.12            IN PTR lanparty.lab.bitsmasher.net.
-254.12        IN PTR odroid-c1.lab.bitsmasher.net.
-254.15        IN PTR labgate.lab.bitsmasher.net.
-
+8.12            IN PTR grimoire.lab.bitsmasher.net.
+254.15          IN PTR labgate.lab.bitsmasher.net.

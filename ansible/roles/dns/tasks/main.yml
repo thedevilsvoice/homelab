@@ -20,7 +20,7 @@
 - name: 'Copy BIND files'
   copy:
     src: "{{ item }}"
-    dest: /etc/bind
+    dest: /etc
     mode: 0664
   with_items:
     - bind
