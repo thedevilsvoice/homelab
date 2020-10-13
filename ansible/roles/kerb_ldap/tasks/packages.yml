@@ -22,3 +22,9 @@
     package: [ 'sasl2-bin', 'libsasl2-2', 'libsasl2-modules', 'libsasl2-modules-gssapi-mit' ]
     state: latest
   tags: admin
+
+- name: 'Install SASL Packages'
+  apt:
+    pacakge: [ 'sasl2-bin', 'libsasl2-2', libsasl2-modules', 'libsasl2-modules-gssapi-mit' ]
+    state: latest
+  tags: admin
