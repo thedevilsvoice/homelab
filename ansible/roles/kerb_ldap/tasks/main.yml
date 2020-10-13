@@ -7,3 +7,6 @@
     path: "/etc/ldap/schema"
     owner: "root"
     state: directory
+
+- name: Install kerberos
+  include: kerberos.yml

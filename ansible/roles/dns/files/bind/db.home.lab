@@ -23,3 +23,6 @@ labgate         IN A 10.10.15.254
 
 ;CNAME Record
 dns             IN CNAME odroid-c1.lab.bitsmasher.net.
+ldap            IN CNAME odroid-c1.lab.bitsmasher.net.
+kdc             IN CNAME odroid-c1.lab.bitsmasher.net.
+kerberos        IN CNAME odroid-c1.lab.bitsmasher.net.
