@@ -1,4 +1,7 @@
 ---
+- name: Install packages
+  include: packages.yml
+
 - name: Adding lab group
   group:
     name: "lab"

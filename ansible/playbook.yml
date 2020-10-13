@@ -10,7 +10,15 @@
 - name: Raspi Cluster configuration
   hosts: cluster
   roles:
+    - common
     - pi
     - cluster
   remote_user: pi
+  become: yes
+
+- name: Ansible playbook for Debian hosts
+  hosts: debian
+  roles:
+    - common
+  remote_user: root
   become: yes

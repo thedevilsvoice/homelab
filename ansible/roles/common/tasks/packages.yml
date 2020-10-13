@@ -1,1 +1,6 @@
-krb5-user krb5-config libpam-krb5
+---
+- name: 'Install Kerberos Packages on Debian/Ubuntu'
+  apt:
+    package: [ 'krb5-user', 'krb5-config', 'libpam-krb5', 'libpam-ccreds' ]
+    state: latest
+  tags: admin
