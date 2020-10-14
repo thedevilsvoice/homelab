@@ -1,5 +1,5 @@
 ---
-- name: 'Coopy /etc/ldap/ldap.conf'
+- name: 'Copy /etc/ldap/ldap.conf'
   copy:
     src: ldap.conf
     dest: /etc/ldap/ldap.conf
@@ -7,12 +7,12 @@
 
 - name: 'Copy /etc/default/slapd'
   copy:
-    src: sldap
+    src: slapd
     dest: /etc/default/slapd
     mode: 0644
 
 - name: 'Coopy /etc/ldap/sldap.conf'
   copy:
-    src: sldap.conf
-    dest: /etc/ldap/sldap.conf
+    src: slapd.conf
+    dest: /etc/ldap/slapd.conf
     mode: 0644

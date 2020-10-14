@@ -4,10 +4,9 @@ dependency:
 driver:
   name: docker
 platforms:
-  - name: odroid-c1
-    hostname: franklin-homelab
-    #image: python:3.6-stretch 
-    image: debian:buster
+  - name: cluster-node
+    hostname: franklin
+    image: ubuntu:latest
     # Do note that running containers in privileged mode is considerably less secure.
     privileged: true
     env:

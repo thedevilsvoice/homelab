@@ -7,27 +7,27 @@
     name: "lab"
     state: present
 
-- name: "Adding username {{ item.username }}"
-  user:
-    name: "{{ item.username }}"
-    create_home: true
-    comment: "managed via ansible"
-    password: "{{ 'password' | password_hash('sha-512' }}"
-    update_password: on_create
-    groups: lab
-  with_items: "{{ users }}"
+#- name: "Adding username {{ item.username }}"
+#  user:
+#    name: "{{ item.username }}"
+#    create_home: true
+#    comment: "managed via ansible"
+#    password: "{{ 'password' | password_hash('sha-512' ) }}"
+#    update_password: on_create
+#    groups: lab
+#  with_items: "{{ users }}"
 
-- name: "Create SSH folders"
-  file:
-    path: "/home/{{ item.name }}/.ssh"
-    owner: "{{ item.name }}"
-    state: directory
-  with_items: "{{ users }}"
+#- name: "Create SSH folders"
+#  file:
+#    path: "/home/{{ item.name }}/.ssh"
+#    owner: "{{ item.name }}"
+#    state: directory
+#  with_items: "{{ users }}"
 
-- name: "Create Authorized keys file"
-  file:
-    src: files/authorized_keys
-    dest: "/home/{{ item.name }}/.ssh/authorized_keys"
-    owner: "{{ item.name }}"
-    state: file
-  with_items: "{{ users }}"
+#- name: "Create Authorized keys file"
+#  file:
+#    src: files/authorized_keys
+#    dest: "/home/{{ item.name }}/.ssh/authorized_keys"
+#    owner: "{{ item.name }}"
+#    state: file
+#  with_items: "{{ users }}"
