@@ -3,3 +3,4 @@
 .ssh
 
 ansible/playbook.retry
+ansible/homelab_test/

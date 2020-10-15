@@ -35,6 +35,7 @@ all:
         node5: {}
       vars:
         ansible_ssh_user: pi
+        ansible_python_interpreter: /usr/bin/python3
         boot_directory: /boot
         docker_apt_repository: "deb http://archive.raspberrypi.org/debian/ buster main ui"
         docker_version: "5:18.09.0~3-0~raspbian-stretch"

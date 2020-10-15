@@ -16,5 +16,7 @@ Welcome to home documentation
    :caption: operation
 
    operation/ansible
+   operation/kerberos
    operation/music
+   operation/openldap
    operation/vnc_connection

@@ -1,0 +1,19 @@
+---
+
+- name: 'Copy /etc/krb5.conf'
+  copy:
+    src: krb5.conf
+    dest: /etc/krb5.conf
+    mode: 0664
+
+- name: "Create /etc/krb5kdc folder"
+  file:
+    path: "/etc/krb5kdc"
+    owner: "root"
+    state: directory
+
+- name: 'Copy /etc/krb5kdc/kdc.conf'
+  copy:
+    src: krb5.conf
+    dest: /etc/krb5kdc/kdc.conf
+    mode: 0664

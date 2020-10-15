@@ -16,3 +16,15 @@
   tags: admin
 
   # ldap-schema-manager -i kerberos.schema
+
+- name: 'Install Kerberos Packages'
+  apt:
+    package: [ 'krb5-kdc', 'krb5-admin-server' ]
+    state: latest
+  tags: admin
+
+- name: 'Install SASL Packages'
+  apt:
+    package: [ 'sasl2-bin', 'libsasl2-2', 'libsasl2-modules', 'libsasl2-modules-gssapi-mit' ]
+    state: latest
+  tags: admin
