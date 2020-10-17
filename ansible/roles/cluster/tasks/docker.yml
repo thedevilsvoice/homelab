@@ -24,6 +24,7 @@
     state: present
     force: true
     install_recommends: "{{ docker_install_recommends }}"
+  when: HOMELAB_MOLECULE_TEST is not defined
 
 # https://opensource.com/article/20/6/kubernetes-raspberry-pi
 - name: 'change the default cgroups driver Docker uses from cgroups to systemd'
@@ -43,7 +44,9 @@
     name: docker-compose
     state: present
     executable: "{{ docker_pip_executable }}"
-  when: docker_install_compose | bool
+  when: 
+    - docker_install_compose | bool
+    - HOMELAB_MOLECULE_TEST is not defined
 
 - name: Ensure docker users are added to the docker group.
   user:

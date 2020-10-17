@@ -16,3 +16,4 @@
     package: [ 'krb5-user', 'krb5-config', 'libpam-krb5', 'libpam-ccreds', 'ldap-utils' ]
     state: latest
   tags: admin
+  when: ansible_os_family == "Debian"

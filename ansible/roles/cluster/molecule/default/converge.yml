@@ -3,7 +3,7 @@
   hosts: all
   become: true
   vars:
-    FRANKLIN_MOLECULE_TEST: "true"
+    HOMELAB_MOLECULE_TEST: "true"
   tasks:
     - name: Set up
       import_role:
