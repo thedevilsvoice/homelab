@@ -1,9 +1,4 @@
 ---
-- name: 'Update APT package cache'
-  apt:
-    update_cache: yes
-    upgrade: safe
-  tags: admin
 
 - name: Install DNS admin tools
   apt:

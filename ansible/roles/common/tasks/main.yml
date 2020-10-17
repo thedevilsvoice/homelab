@@ -2,6 +2,12 @@
 - name: Install packages
   include: packages.yml
 
+- name: Setup NTP
+  include: ntp.yml
+
+- name: "Set up auth on hosts"
+  include: auth.yml
+
 - name: Adding lab group
   group:
     name: "lab"

@@ -1,10 +1,6 @@
 ---
 
-- name: 'Copy /etc/krb5.conf'
-  copy:
-    src: krb5.conf
-    dest: /etc/krb5.conf
-    mode: 0664
+# /etc/krb5.conf is in the common playbook
 
 - name: "Create /etc/krb5kdc folder"
   file:
