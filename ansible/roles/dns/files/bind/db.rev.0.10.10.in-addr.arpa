@@ -19,4 +19,5 @@ lab.bitsmasher.net. IN NS odroid-c1.lab.bitsmasher.net.
 3.12            IN PTR node3.lab.bitsmasher.net.
 7.12            IN PTR lanparty.lab.bitsmasher.net.
 8.12            IN PTR grimoire.lab.bitsmasher.net.
+13.12           IN PTR fileserve1.lab.bitsmasher.net.
 254.15          IN PTR labgate.lab.bitsmasher.net.

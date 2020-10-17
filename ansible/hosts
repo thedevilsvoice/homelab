@@ -9,3 +9,6 @@ node3 ansible_host=10.10.12.3 ansible_user=pi
 
 [debian]
 lanparty ansible_host=10.10.12.7 ansible_user=root
+
+[raspis]
+fileserve1 ansible_host=10.10.12.13 ansible_user=pi

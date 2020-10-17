@@ -19,6 +19,7 @@ node2           IN A 10.10.12.2
 node3           IN A 10.10.12.3
 lanparty        IN A 10.10.12.7
 grimoire        IN A 10.10.12.8
+fileserve1      IN A 10.10.12.13
 labgate         IN A 10.10.15.254
 
 ;CNAME Record

@@ -1,7 +1,7 @@
 # Default location of the slapd.conf file or slapd.d cn=config directory. If
 # empty, use the compiled-in default (/etc/ldap/slapd.d with a fallback to
 # /etc/ldap/slapd.conf).
-SLAPD_CONF=
+SLAPD_CONF=/etc/ldap/slapd.conf
 
 # System account to run the slapd server under. If empty the server
 # will run as root.
@@ -14,7 +14,7 @@ SLAPD_GROUP="openldap"
 # Path to the pid file of the slapd server. If not set the init.d script
 # will try to figure it out from $SLAPD_CONF (/etc/ldap/slapd.d by
 # default)
-SLAPD_PIDFILE=
+SLAPD_PIDFILE=/var/run/slapd/slapd.pid
 
 # slapd normally serves ldap only on all TCP-ports 389. slapd can also
 # service requests on TCP-port 636 (ldaps) and requests via unix
@@ -41,7 +41,7 @@ SLAPD_SENTINEL_FILE=/etc/ldap/noslapd
 # uncomment this line and change the path.
 #export KRB5_KTNAME=/etc/krb5.keytab
 #https://help.ubuntu.com/community/SingleSignOn
-#export KRB5_KTNAME=/etc/ldap/ldap.keytab
+export KRB5_KTNAME=/etc/ldap/ldap.keytab
 
 # Additional options to pass to slapd
 SLAPD_OPTIONS=""
