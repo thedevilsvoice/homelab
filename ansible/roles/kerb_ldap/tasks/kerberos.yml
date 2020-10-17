@@ -10,6 +10,6 @@
 
 - name: 'Copy /etc/krb5kdc/kdc.conf'
   copy:
-    src: krb5.conf
+    src: kdc.conf
     dest: /etc/krb5kdc/kdc.conf
     mode: 0664

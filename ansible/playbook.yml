@@ -9,7 +9,7 @@
   become: yes
 
 - name: Ansible Playbook for Raspberry Pi hosts
-  hosts: raspi
+  hosts: raspis
   roles:
     - common
     - pi

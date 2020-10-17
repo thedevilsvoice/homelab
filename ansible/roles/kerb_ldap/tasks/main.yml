@@ -2,18 +2,6 @@
 - name: Install packages
   include: packages.yml
 
-- name: "Create /etc/ldap folder"
-  file:
-    path: "/etc/ldap"
-    owner: "root"
-    state: directory
-
-- name: "Create /etc/ldap/schema folder"
-  file:
-    path: "/etc/ldap/schema"
-    owner: "root"
-    state: directory
-
 - name: Install kerberos
   include: kerberos.yml
 
