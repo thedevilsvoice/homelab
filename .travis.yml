@@ -8,6 +8,7 @@ services:
   - docker
 before_install:
   - sudo apt -qq update
+install:
   - python -m pip install -r python/requirements-test.txt
   - python -m pip install -r python/requirements.txt
 script:
