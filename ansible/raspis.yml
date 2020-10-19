@@ -1,0 +1,8 @@
+---
+- name: Ansible Playbook for Raspberry Pi hosts
+  hosts: raspis
+  roles:
+    - common
+    - pi
+  remote_user: pi
+  become: yes

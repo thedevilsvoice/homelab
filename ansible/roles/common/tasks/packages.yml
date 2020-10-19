@@ -1,6 +1,19 @@
 ---
+
+- name: 'Update APT package cache'
+  apt:
+    update_cache: yes
+    upgrade: safe
+  tags: admin
+
+- name: 'Upgrade APT to the latest packages'
+  apt: 
+    upgrade: safe
+  tags: admin
+       
 - name: 'Install Kerberos Packages on Debian/Ubuntu'
   apt:
-    package: [ 'krb5-user', 'krb5-config', 'libpam-krb5', 'libpam-ccreds' ]
+    package: [ 'krb5-user', 'krb5-config', 'libpam-krb5', 'libpam-ccreds', 'ldap-utils' ]
     state: latest
   tags: admin
+  when: ansible_os_family == "Debian"

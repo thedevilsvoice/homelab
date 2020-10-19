@@ -2,12 +2,21 @@
 - name: Ansible Playbook for ODroid C1+
   hosts: odroid-c1
   roles:
+    - common
     - dns
     - kerb_ldap
   remote_user: root
   become: yes
 
-- name: Raspi Cluster configuration
+- name: Ansible Playbook for Raspberry Pi hosts
+  hosts: raspis
+  roles:
+    - common
+    - pi
+  remote_user: pi
+  become: yes
+
+- name: Ansible Playbook for Raspi Cluster
   hosts: cluster
   roles:
     - common

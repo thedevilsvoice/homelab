@@ -10,7 +10,7 @@
     dest: /etc/apt/sources.list.d/kubernetes.list
 #  notify: apt-get update
 
-- name: 'Update APT package cache'
+- name: 'NEW REPO ADDED: Update APT package cache'
   apt:
     name: "*"
     update_cache: yes

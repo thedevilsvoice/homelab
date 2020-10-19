@@ -1,0 +1,11 @@
+---
+- name: Converge
+  hosts: all
+  become: true
+  roles:
+    - common
+    - pi
+    - cluster
+  vars: 
+    molecule_no_log: false
+    HOMELAB_MOLECULE_TEST: "true"
