@@ -9,5 +9,5 @@ install:
   - python -m pip install -r python/requirements-test.txt
   - python -m pip install -r python/requirements.txt
 script:
+  - cd ansible/roles/cluster && molecule syntax && cd - 
   - cd ansible/roles/dns && molecule syntax && cd -
-  - cd ansible/roles/pi && molecule syntax && cd -
