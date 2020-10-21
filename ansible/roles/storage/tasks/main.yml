@@ -6,12 +6,22 @@
     dest: /tmp/install
     mode: '0755'
 
+- name: 'Install OMV'
+  shell: ./install
+  args:
+    chdir: /tmp
+
 # wget -O - http://omv-extras.org/install | bash
 - name: 'Download OMV extras installer'
   get_url:
     url: http://omv-extras.org/install
     dest: /tmp/extras_install
     mode: '0755'
+
+- name: 'Install OMV Extras'
+  shell: extras_install
+  args:
+    chdir: /tmp
 
 #gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv 7AA630A1EDEE7D73
 - name: 'Add OpenMediaVault apt key by id from keyserver'
@@ -27,4 +37,5 @@
     update_cache: yes
     upgrade: safe
   tags: admin
+
 #systemctl status openmediavault-engined
