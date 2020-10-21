@@ -1,0 +1,18 @@
+---
+- name: "Restart kdc"
+  service:
+    name: krb5-kdc
+    state: restarted
+    listen: "restart krb5-kdc service"
+
+- name: "Restart krb5-admin-server"
+  service:
+    name: krb5-admin-server
+    state: restarted
+    listen: "restart krb5-admin-server service"
+
+- name: "Restart Open LDAP Service"
+  service:
+    name: slapd
+    state: restarted
+    listen: "restart slapd service"

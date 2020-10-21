@@ -1,4 +1,11 @@
 ---
+# This goes here because of logging specified in krb5.conf
+- name: "Create /var/log/kerberos folder"
+  file:
+    path: "/var/log/kerberos"
+    owner: "root"
+    state: directory
+
 - name: 'Copy /etc/krb5.conf'
   copy:
     src: krb5.conf
