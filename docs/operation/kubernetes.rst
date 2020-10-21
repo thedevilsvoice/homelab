@@ -3,7 +3,7 @@
     ssh-add ~/.ssh/id_rsa
     ssh pi@node0
     sudo kubectl get nodes
-    kubectl get namespaces
+    sudo kubectl get namespaces
     kubectl create namespace kube-verify
     kubectl get namespaces
 
@@ -59,3 +59,4 @@
 .. code-block:: bash
 
     kubectl get -n kube-verify service/kube-verify
+    sudo docker run -it --rm --privileged --net=host   -v /:/rootfs -v $CONFIG_DIR:$CONFIG_DIR -v $LOG_DIR:/var/log   k8s.gcr.io/node-test-arm:0.2
