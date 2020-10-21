@@ -13,3 +13,13 @@
     src: kdc.conf
     dest: /etc/krb5kdc/kdc.conf
     mode: 0664
+
+- name: 'KDC is running'
+  service:
+    name: krb5-kdc
+    state: started
+
+- name: 'krb5-admin-server is running'
+  service:
+    name: krb5-kdc
+    state: started

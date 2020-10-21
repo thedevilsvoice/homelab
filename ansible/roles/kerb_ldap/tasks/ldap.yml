@@ -23,8 +23,13 @@
     dest: /etc/default/slapd
     mode: 0644
 
-- name: 'Coopy /etc/ldap/sldap.conf'
+- name: 'Copy /etc/ldap/sldap.conf'
   copy:
     src: slapd.conf
     dest: /etc/ldap/slapd.conf
     mode: 0644
+
+- name: 'slapd is running'
+  service: 
+    name: slapd
+    state: started
