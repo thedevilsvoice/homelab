@@ -1,2 +1,6 @@
 ---
-# handlers file for dns
+- name: 'bind9 is restarted'
+  service:
+    name: bind9
+    state: restarted
+  listen: "restart bind9 service"
