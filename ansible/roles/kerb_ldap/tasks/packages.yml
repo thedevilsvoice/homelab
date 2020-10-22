@@ -1,13 +1,9 @@
 ---
-- name: Install krb5-kdc-ldap 
+- name: 'Install Kerberos Packages'
   apt:
-    name: krb5-kdc-ldap
+    package: [ 'krb5-kdc', 'krb5-admin-server', 'krb5-pkinit' ]
     state: latest
-
-- name: Install krb5-admin-server
-  apt:
-    name: krb5-admin-server
-    state: latest
+  tags: admin
 
 - name: Install LDAP tools
   apt:
@@ -16,12 +12,6 @@
   tags: admin
 
   # ldap-schema-manager -i kerberos.schema
-
-- name: 'Install Kerberos Packages'
-  apt:
-    package: [ 'krb5-kdc', 'krb5-admin-server' ]
-    state: latest
-  tags: admin
 
 - name: 'Install SASL Packages'
   apt:
