@@ -1,0 +1,41 @@
+---
+# wget -O - https://github.com/OpenMediaVault-Plugin-Developers/installScript/raw/master/install | sudo bash
+- name: 'Download OMV installer'
+  get_url:
+    url: https://github.com/OpenMediaVault-Plugin-Developers/installScript/raw/master/install
+    dest: /tmp/install
+    mode: '0755'
+
+- name: 'Install OMV'
+  shell: ./install
+  args:
+    chdir: /tmp
+
+# wget -O - http://omv-extras.org/install | bash
+- name: 'Download OMV extras installer'
+  get_url:
+    url: http://omv-extras.org/install
+    dest: /tmp/extras_install
+    mode: '0755'
+
+- name: 'Install OMV Extras'
+  shell: extras_install
+  args:
+    chdir: /tmp
+
+#gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv 7AA630A1EDEE7D73
+- name: 'Add OpenMediaVault apt key by id from keyserver'
+  apt_key:
+    keyserver: keyserver.ubuntu.com
+    id: 7AA630A1EDEE7D73
+
+#gpg --export --armor 7AA630A1EDEE7D73 | sudo apt-key add -
+
+#apt update
+- name: 'Update APT package cache'
+  apt:
+    update_cache: yes
+    upgrade: safe
+  tags: admin
+
+#systemctl status openmediavault-engined
