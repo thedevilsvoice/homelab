@@ -8,13 +8,13 @@
   remote_user: root
   become: yes
 
-#- name: Ansible Playbook for Raspberry Pi hosts
-#  hosts: raspis
-#  roles:
-#    - common
-#    - pi
-#  remote_user: pi
-#  become: yes
+- name: Ansible Playbook for Raspberry Pi hosts
+  hosts: raspis
+  roles:
+    - common
+    - pi
+  remote_user: pi
+  become: yes
 
 - name: Ansible Playbook for Raspi Cluster
   hosts: cluster

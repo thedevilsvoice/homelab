@@ -1,0 +1,28 @@
+---
+#sudo apt-get purge wolfram-engine libreoffice* scratch -y
+- name: 'Remove extra junk from Raspberry Pi'
+  apt:
+    purge: yes
+    package: [ 
+      'wolfram-engine', 
+      'libreoffice*', 
+      'scratch', 
+      'bluej', 
+      'greenfoot', 
+      'nodered', 
+      'minecraft-pi',
+      'task-desktop',
+      'gnome-desktop' ]
+    state: absent
+  tags: admin
+
+- name: Remove useless packages from the cache
+  apt:
+    autoclean: yes
+  tags: admin
+
+- name: Remove dependencies that are no longer required
+  apt:
+    autoremove: yes
+    purge: yes
+  tags: admin

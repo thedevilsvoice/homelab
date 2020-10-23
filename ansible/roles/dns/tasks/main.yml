@@ -19,3 +19,5 @@
     mode: 0664
   with_items:
     - bind
+  notify: "restart bind9 service"
+  
