@@ -1,6 +1,6 @@
 $TTL    10800
 @ IN SOA odroid-c1.lab.bitsmasher.net. root.lab.bitsmasher.net (
-       2020101302 ; serial
+       2020102101 ; serial
         8H ; refresh
         4H ; retry
         4W ; expire
@@ -21,6 +21,7 @@ lanparty        IN A 10.10.12.7
 grimoire        IN A 10.10.12.8
 fileserve1      IN A 10.10.12.13
 media1          IN A 10.10.12.20
+ns2             IN A 10.10.13.1
 pa220           IN A 10.10.15.253
 labgate         IN A 10.10.15.254
 
