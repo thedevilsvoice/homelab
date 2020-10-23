@@ -3,14 +3,18 @@
 - name: 'Remove extra junk from Raspberry Pi'
   apt:
     purge: yes
-    package: [ 'wolfram-engine', 'libreoffice*', 'scratch', 'bluej', 'greenfoot', 'nodered', 'minecraft-pi' ]
+    package: [ 
+      'wolfram-engine', 
+      'libreoffice*', 
+      'scratch', 
+      'bluej', 
+      'greenfoot', 
+      'nodered', 
+      'minecraft-pi',
+      'task-desktop',
+      'gnome-desktop' ]
     state: absent
   tags: admin
-
-# Remove X desktop
-# sudo apt-get remove task-desktop -y
-# sudo tasksel remove gnome-desktop
-# sudo apt-get --purge autoremove -y  
 
 - name: Remove useless packages from the cache
   apt:
