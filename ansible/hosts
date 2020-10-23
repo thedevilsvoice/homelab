@@ -14,5 +14,5 @@ lanparty ansible_host=10.10.12.7 ansible_user=root
 fileserve1 ansible_host=10.10.12.13 ansible_user=pi
 
 # This will be pi zeros, etc
-#[raspis]
+[raspis]
 media1 ansible_host=10.10.12.20 ansible_user=pi
