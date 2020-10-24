@@ -1,15 +1,17 @@
 ---
-- name: 'Install Kerberos Packages'
+- name: 'Install Kerberos Server Packages'
   apt:
     package: [ 'krb5-kdc', 'krb5-admin-server', 'krb5-pkinit' ]
     state: latest
   tags: admin
+  when: "'odroid-c1' in inventory_hostname"
 
-- name: Install LDAP tools
+- name: Install LDAP Server tools
   apt:
     package: ['slapd', 'schema2ldif', 'ldap-utils']
     state: latest
   tags: admin
+  when: "'ns2' in inventory_hostname"
 
   # ldap-schema-manager -i kerberos.schema
 
@@ -18,3 +20,4 @@
     package: [ 'sasl2-bin', 'libsasl2-2', 'libsasl2-modules', 'libsasl2-modules-gssapi-mit' ]
     state: latest
   tags: admin
+  when: "'ns2' in inventory_hostname"

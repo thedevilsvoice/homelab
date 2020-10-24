@@ -3,10 +3,12 @@
 zone "lab.bitsmasher.net" IN {
   type master;
   file "/etc/bind/db.home.lab";
-  allow-update { none; };
+  allow-transfer { 10.10.13.1; };
+  also-notify { 10.10.13.1; };
 };
 zone "10.10.in-addr.arpa" {
   type master;
   file "/etc/bind/db.rev.0.10.10.in-addr.arpa";
-  allow-update { none; };
+  allow-transfer { 10.10.13.1; };
+  also-notify { 10.10.13.1; };
 };

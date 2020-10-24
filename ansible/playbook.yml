@@ -1,8 +1,13 @@
 ---
-- name: Ansible Playbook for ODroid C1+
-  hosts: odroid-c1
+- name: 'Common playbook for all hosts'
+  hosts: all
   roles:
     - common
+  become: yes
+
+- name: Ansible Playbook for servers
+  hosts: servers
+  roles:
     - dns
     - kerb_ldap
   remote_user: root
@@ -11,7 +16,6 @@
 - name: Ansible Playbook for Raspberry Pi hosts
   hosts: raspis
   roles:
-    - common
     - pi
   remote_user: pi
   become: yes
@@ -19,7 +23,6 @@
 - name: Ansible Playbook for Raspi Cluster
   hosts: cluster
   roles:
-    - common
     - pi
     - cluster
   remote_user: pi
@@ -28,15 +31,14 @@
 - name: Ansible Playbook for storage cluster
   hosts: storage
   roles:
-    - common
     - pi
     - storage
   remote_user: pi
   become: yes
 
-- name: Ansible playbook for Debian hosts
-  hosts: debian
-  roles:
-    - common
-  remote_user: root
-  become: yes
+#- name: Ansible playbook for Debian hosts
+#  hosts: debian
+#  roles:
+#    - common
+#  remote_user: root
+#  become: yes

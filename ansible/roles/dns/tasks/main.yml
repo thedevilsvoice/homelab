@@ -1,10 +1,6 @@
 ---
-
-- name: Install DNS admin tools
-  apt:
-    package: ['bind9', 'bind9utils', 'dnsutils']
-    state: latest
-  tags: admin
+- name: Install packages
+  include: packages.yml
 
 - name: "Create /etc/bind folder"
   file:
@@ -19,5 +15,18 @@
     mode: 0664
   with_items:
     - bind
-  notify: "restart bind9 service"
+  notify: "restart bind service"
   
+- name: 'Copy /etc/bind/named.conf.local on master'
+  copy:
+    src: named.conf.local.master
+    dest: /etc/bind/named.conf.local
+    mode: 0644
+  when: "'odroid-c1' in inventory_hostname"
+
+- name: 'Copy /etc/bind/named.conf.local on slave'
+  copy:
+    src: named.conf.local.slave
+    dest: /etc/bind/named.conf.local
+    mode: 0644
+  when: "'ns2' in inventory_hostname"

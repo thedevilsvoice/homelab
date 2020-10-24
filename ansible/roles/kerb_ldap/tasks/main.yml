@@ -4,6 +4,8 @@
 
 - name: Install kerberos
   include: kerberos.yml
+  when: "'odroid-c1' in inventory_hostname"
 
 - name: Install openldap
   include: ldap.yml
+  when: "'ns2' in inventory_hostname"

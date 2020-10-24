@@ -41,3 +41,8 @@ sudo apt install krb5-user krb5-config libpam-krb5 libpam-ccreds
 apt install ldap-utils
 
 Realm is LAB.BITSMASHER.NET
+
+User
+====
+
+kinit franklin -X X509_user_identity=FILE:~/.ssh/franklin-cert.pem,~/.ssh/franklin-key.pem

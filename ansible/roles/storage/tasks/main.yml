@@ -19,7 +19,7 @@
     mode: '0755'
 
 - name: 'Install OMV Extras'
-  shell: extras_install
+  shell: ./extras_install
   args:
     chdir: /tmp
 
