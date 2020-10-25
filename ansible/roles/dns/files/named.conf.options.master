@@ -3,15 +3,13 @@ options{
   forward only;
   forwarders {
     75.75.75.75;
-    8.8.8.8;
     1.1.1.1;
   };
   auth-nxdomain no;    # conform to RFC1035
   // Listen on local interfaces only(IPV4)
   listen-on-v6 { none; };
   listen-on port 53 { 127.0.0.53; 10.10.12.254; };
-  // Do not transfer the zone information to the secondary DNS
-  allow-transfer { none; };
+  allow-transfer { 10.10.13.1; }; 
   dnssec-enable no;
   dnssec-validation no;
 

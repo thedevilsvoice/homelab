@@ -15,18 +15,18 @@
     mode: 0664
   with_items:
     - bind
-  notify: "restart bind service"
+  notify: "restart bind9 service"
   
-- name: 'Copy /etc/bind/named.conf.local on master'
+- name: 'Copy /etc/bind/named.conf.options on master'
   copy:
-    src: named.conf.local.master
-    dest: /etc/bind/named.conf.local
+    src: named.conf.options.master
+    dest: /etc/bind/named.conf.options
     mode: 0644
   when: "'odroid-c1' in inventory_hostname"
 
-- name: 'Copy /etc/bind/named.conf.local on slave'
+- name: 'Copy /etc/bind/named.conf.options on slave'
   copy:
-    src: named.conf.local.slave
-    dest: /etc/bind/named.conf.local
+    src: named.conf.options.slave
+    dest: /etc/bind/named.conf.options
     mode: 0644
   when: "'ns2' in inventory_hostname"

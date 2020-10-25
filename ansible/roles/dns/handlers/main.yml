@@ -1,6 +1,6 @@
 ---
-- name: 'bind is restarted'
+- name: 'bind9 is restarted'
   service:
-    name: bind
+    name: bind9
     state: restarted
-  listen: "restart bind service"
+  listen: "restart bind9 service"
