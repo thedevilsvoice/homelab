@@ -1,0 +1,21 @@
+---
+- name: "Create /var/log/rsyslog folder"
+  file:
+    path: "/var/log/rsyslog"
+    owner: "syslog"
+    state: directory
+
+- name: 'Copy remote logger config'
+  copy:
+    src: bitsmasher.conf
+    dest: /etc/rsyslog.d/bitsmasher.conf
+    mode: 0664
+    owner: "syslog"
+
+- name: 'Copy /etc/rsyslog.conf'
+  copy:
+    src: rsyslog.conf
+    dest: /etc/rsyslog.conf
+    mode: 0664
+    owner: "syslog"
+  notify: "restart rsyslog service"

@@ -1,6 +1,6 @@
 $TTL    10800
 @ IN SOA odroid-c1.lab.bitsmasher.net. root.lab.bitsmasher.net (
-       2020102101 ; serial
+       2020102102 ; serial
         8H ; refresh
         4H ; retry
         4W ; expire
@@ -26,10 +26,13 @@ pa220           IN A 10.10.15.253
 labgate         IN A 10.10.15.254
 
 ;CNAME Record
-dns             IN CNAME odroid-c1.lab.bitsmasher.net.
-ldap            IN CNAME odroid-c1.lab.bitsmasher.net.
-kdc             IN CNAME odroid-c1.lab.bitsmasher.net.
-kerberos        IN CNAME odroid-c1.lab.bitsmasher.net.
+ns1              IN CNAME odroid-c1.lab.bitsmasher.net.
+ldap1            IN CNAME odroid-c1.lab.bitsmasher.net.
+ldap2            IN CNAME ns2.lab.bitsmasher.net.
+kdc1             IN CNAME odroid-c1.lab.bitsmasher.net.
+kdc2             IN CNAME ns2.lab.bitsmasher.net.
+kerberos1        IN CNAME odroid-c1.lab.bitsmasher.net.
+kerberos2        IN CNAME ns2.lab.bitsmasher.net.
 
 ;KERBEROS Records
 $ORIGIN lab.bitsmasher.net.

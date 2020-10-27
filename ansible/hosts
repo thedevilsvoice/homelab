@@ -1,5 +1,6 @@
-[odroid]
+[servers]
 odroid-c1 ansible_host=10.10.12.254 ansible_user=root
+ns2 ansible_host=10.10.13.1 ansible_user=pi
 
 [cluster]
 node0 ansible_host=10.10.12.0 ansible_user=pi
@@ -16,4 +17,3 @@ fileserve1 ansible_host=10.10.12.13 ansible_user=pi
 # This will be pi zeros, etc
 [raspis]
 media1 ansible_host=10.10.12.20 ansible_user=pi
-ns2 ansible_host=10.10.13.1 ansible_user=pi

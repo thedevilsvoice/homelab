@@ -1,0 +1,6 @@
+---
+- name: 'rsyslog is running'
+  service:
+    name: rsyslog
+    state: restarted
+    listen: "restart rsyslog service"
