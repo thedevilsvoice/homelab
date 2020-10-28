@@ -1,3 +1,29 @@
+Operating the Cluster
+=====================
+
+From outside the cluster:
+
+.. code-block:: bash
+
+    for h in node{0..3}; do ssh pi@$h kubeadm version; done
+    for h in node{0..3}; do ssh pi@$h systemctl is-active kubelet; done
+    for h in node{0..3}; do ssh pi@$h sudo apt upgrade -y --allow-change-held-packages kubeadm kubectl kubelet; done
+
+From the head node:
+
+.. code-block:: bash
+
+    sudo kubeadm upgrade plan
+    kubectl -n kube-system get cm kubeadm-config -oyaml
+    sudo kubectl describe node node0
+    sudo kubectl taint nodes --all node-role.kubernetes.io/master-
+    sudo kubectl describe node | grep -i taint
+
+
+Create the UI:
+sudo kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml
+
+
 .. code-block:: bash
 
     ssh-add ~/.ssh/id_rsa
