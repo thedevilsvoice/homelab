@@ -1,4 +1,20 @@
 ---
+
+- name: Grab the credentials from ansible-vault
+  include_vars: 'firewall-secrets.yml'
+  no_log: 'yes'
+
+- name: Retrieve API Key
+  panos_api_key:
+    ip_address: '{{ ip_address }}'
+    password: '{{ password }}'
+  register: auth
+
+- name: Display API Key
+  debug:
+    var: '{{ auth.api_key }}'
+    verbosity: 0
+
 - name: Get the system info
   panos_op:
     provider: '{{ provider }}'
