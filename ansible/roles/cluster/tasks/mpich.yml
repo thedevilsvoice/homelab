@@ -1,0 +1,6 @@
+---
+- name: 'Install MPIch on Raspi Cluster'
+    apt:
+      package: [ 'gfortran', 'mpich', 'python3-mpi4py' ]
+      state: latest
+    tags: admin

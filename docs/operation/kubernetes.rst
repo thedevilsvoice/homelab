@@ -28,8 +28,8 @@ sudo kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.
 
     ssh-add ~/.ssh/id_rsa
     ssh pi@node0
-    sudo kubectl get nodes
-    sudo kubectl get namespaces
+    kubectl get nodes
+    kubectl get namespaces
     kubectl create namespace kube-verify
     kubectl get namespaces
 

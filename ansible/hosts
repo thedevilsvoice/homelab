@@ -17,3 +17,6 @@ fileserve1 ansible_host=10.10.12.13 ansible_user=pi
 # This will be pi zeros, etc
 [raspis]
 media1 ansible_host=10.10.12.20 ansible_user=pi
+
+[firewall]
+pa220 ansible_host=10.10.15.254 ansible_user=admin
