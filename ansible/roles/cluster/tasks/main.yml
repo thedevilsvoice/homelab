@@ -7,3 +7,6 @@
 
 - name: Install Kuberbnetes
   include: kubernetes.yml
+
+- name: 'Install MPICH'
+  include: mpich.yml

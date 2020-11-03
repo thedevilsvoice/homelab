@@ -20,7 +20,7 @@
 
 - name: 'Install Python3 & Ruby on Debian/Ubuntu'
   apt:
-    package: [ 'python3-pip', 'ruby' ]
+    package: [ 'python3-pip', 'python3-venv', 'ruby' ]
     state: latest
   tags: admin
   when: ansible_os_family == "Debian"
@@ -35,3 +35,17 @@
     - lolcat
 
 # Publishing tools sigil calibre
+
+# https://protonvpn.com/support/linux-vpn-setup/
+- name: 'Proton VPN'
+  apt:
+    package: [ 'openvpn', 'network-manager-openvpn-gnome', 'resolvconf', 'dialog', 'python3-pip', 'python3-setuptools' ]
+    state: latest
+  tags: admin
+  when: ansible_os_family == "Debian"
+
+- pip:
+    name: protonvpn-cli
+    executable: pip-3.3
+  tags: admin
+  when: ansible_os_family == "Debian"
