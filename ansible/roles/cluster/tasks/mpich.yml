@@ -1,0 +1,54 @@
+---
+- name: 'Install MPIch on Raspi Cluster'
+  apt:
+    package: [ 'gfortran', 'mpich', 'python3-mpi4py', 'slurm-wlm', 'munge' ]
+    state: latest
+  tags: cluster
+
+- name: 'install slurm.conf'
+  copy:
+    src: slurm.conf
+    dest: /etc/slurm-llnl/slurm.conf
+    mode: 0644
+
+- name: 'Set NodeName in /etc/slurm-llnl/slurm.conf'
+  lineinfile:
+    path: /etc/slurm-llnl/slurm.conf
+    regexp: '^NodeName=server'
+    line: "NodeName={{ ansible_hostname }} CPUs=4 State=UNKNOWN"
+
+- name: 'install cgroup.conf for slurm'
+  copy:
+    src: cgroup.conf
+    dest: /etc/slurm-llnl/cgroup.conf
+    mode: 0644
+  notify: "restart slurmd service"
+
+- name: 'install cgroup_allowed_devices_file.conf for slurm'
+  copy:
+    src: cgroup_allowed_devices_file.conf
+    dest: /etc/slurm-llnl/cgroup_allowed_devices_file.conf
+    mode: 0644
+  notify: 
+    - 'restart munge service'
+    - 'restart slurmd service'
+    - 'restart slurmctld service'
+
+- name: 'Ensure munge is started'
+  service:
+    name: munge
+    state: started
+    enabled: true
+
+- name: 'Ensure slurmd is started'
+  service:
+    name: slurmd
+    state: started
+    enabled: true
+
+- name: 'Ensure slurmctld is started'
+  service:
+    name: slurmctld
+    state: started
+    enabled: true
+  

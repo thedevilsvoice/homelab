@@ -7,3 +7,18 @@
 
 - name: Install Kuberbnetes
   include: kubernetes.yml
+
+- name: 'Copy /etc/hosts'
+  copy:
+    src: hosts
+    dest: /etc/hosts
+    mode: 0644
+
+# https://medium.com/@glmdev/building-a-raspberry-pi-cluster-784f0df9afbd
+- name: 'Install MPICH on the head node'
+  include: mpich.yml
+  when: "'node0' in inventory_hostname"
+
+- name: 'Install MPICH on workers'
+  include: mpich_client.yml
+  when: "'node0' not in inventory_hostname"

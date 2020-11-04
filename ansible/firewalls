@@ -1,0 +1,5 @@
+[firewall]
+pa220 ip_address=pa220
+
+#[panorama]
+#my-panorama ip_address=pano.local

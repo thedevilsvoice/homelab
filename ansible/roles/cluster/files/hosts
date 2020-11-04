@@ -1,0 +1,9 @@
+127.0.0.1	localhost
+::1		localhost ip6-localhost ip6-loopback
+ff02::1		ip6-allnodes
+ff02::2		ip6-allrouters
+
+10.10.12.0 node0.lab.bitsmasher.net node0
+10.10.12.1 node1.lab.bitsmasher.net node1
+10.10.12.2 node2.lab.bitsmasher.net node2
+10.10.12.3 node3.lab.bitsmasher.net node3

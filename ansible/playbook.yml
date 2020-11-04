@@ -40,5 +40,6 @@
 #  hosts: debian
 #  roles:
 #    - common
+#    - desktop
 #  remote_user: root
 #  become: yes
