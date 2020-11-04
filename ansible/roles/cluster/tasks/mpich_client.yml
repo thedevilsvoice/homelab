@@ -1,0 +1,7 @@
+---
+- name: 'Install MPICH client on Raspi Cluster worker node'
+  apt:
+    package: [ 'slurmd', 'slurm-client' ]
+    state: latest
+  tags: cluster
+    

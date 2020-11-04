@@ -8,7 +8,6 @@
   copy:
     content: "deb https://apt.kubernetes.io/ kubernetes-xenial main\n"
     dest: /etc/apt/sources.list.d/kubernetes.list
-#  notify: apt-get update
 
 - name: 'NEW REPO ADDED: Update APT package cache'
   apt:

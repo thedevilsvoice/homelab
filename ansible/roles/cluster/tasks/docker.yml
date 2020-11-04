@@ -32,6 +32,7 @@
     src: daemon.json
     dest: /etc/docker/daemon.json
     mode: 0664
+  notify: "restart docker service"
 
 - name: Ensure Docker is started.
   service:
