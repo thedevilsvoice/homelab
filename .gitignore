@@ -6,3 +6,5 @@ ansible/playbook.retry
 ansible/homelab_test/
 ansible/roles/firewall/vars/firewall-secrets.yml
 ansible/roles/firewall/vars/panorama-secrets.yml
+ansible/roles/paloaltonetworks.paloaltonetworks
+ansible_collections
