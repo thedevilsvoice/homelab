@@ -2,6 +2,28 @@
 - name: Firewall setup for Raspis
   include: firewall.yml
 
+- name: "Create /mnt/clusterfs directory"
+  file:
+    path: "/mnt/clusterfs"
+    owner: 'nobody'
+    group: 'nogroup'
+    mode: 0755
+    state: directory
+
+- name: "Create /mnt/backup1 directory"
+  file:
+    path: "/mnt/backup1"
+    owner: 'nobody'
+    group: 'nogroup'
+    mode: 0755
+    state: directory
+  
+- name: 'Install NFS packages'
+  apt:
+      package: ['nfs-common' ]
+      state: latest
+  tags: admin
+
 - name: Include docker setup for Raspis
   include: docker.yml
 

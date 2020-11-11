@@ -5,7 +5,15 @@
     - common
   become: yes
 
-- name: Ansible Playbook for servers
+- name: 'Ansible Playbook for storage cluster'
+  hosts: storage
+  roles:
+    - pi
+    #- storage
+  remote_user: pi
+  become: yes
+
+- name: 'Ansible Playbook for servers'
   hosts: servers
   roles:
     - dns
@@ -13,26 +21,18 @@
   remote_user: root
   become: yes
 
-- name: Ansible Playbook for Raspberry Pi hosts
+- name: 'Ansible Playbook for Raspberry Pi hosts'
   hosts: raspis
   roles:
     - pi
   remote_user: pi
   become: yes
 
-- name: Ansible Playbook for Raspi Cluster
+- name: 'Ansible Playbook for Raspi Cluster'
   hosts: cluster
   roles:
     - pi
     - cluster
-  remote_user: pi
-  become: yes
-
-- name: Ansible Playbook for storage cluster
-  hosts: storage
-  roles:
-    - pi
-    - storage
   remote_user: pi
   become: yes
 

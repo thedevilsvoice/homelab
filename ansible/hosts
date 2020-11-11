@@ -17,4 +17,4 @@ fileserve2 ansible_host=10.10.12.14 ansible_user=pi
 
 # This will be pi zeros, etc
 [raspis]
-media1 ansible_host=10.10.12.20 ansible_user=pi
+media01 ansible_host=10.10.12.20 ansible_user=pi
