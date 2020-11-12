@@ -9,7 +9,7 @@
   hosts: storage
   roles:
     - pi
-    #- storage
+    - storage
   remote_user: pi
   become: yes
 

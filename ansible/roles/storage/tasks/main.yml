@@ -23,7 +23,8 @@
     src: exports
     dest: /etc/exports
     mode: 0644
+  when: "'fileserve2' in inventory_hostname"
   
-sudo exportfs –a
-sudo ufw allow from 10.10.8.0/21 to any port nfs
-sudo ufw status
+#sudo exportfs –a
+#sudo ufw allow from 10.10.8.0/21 to any port nfs
+#sudo ufw status

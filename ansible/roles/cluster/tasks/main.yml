@@ -24,6 +24,20 @@
       state: latest
   tags: admin
 
+- name: 'Mount /mnt/backup1'
+  mount: 
+      src: "fileserve2:/mnt/backup1" 
+      path: "/mnt/backup1"
+      fstype: nfs
+      state: mounted
+
+- name: 'Mount /mnt/clusterfs'
+  mount: 
+      src: "fileserve2:/mnt/clusterfs" 
+      path: "/mnt/clusterfs"
+      fstype: nfs
+      state: mounted
+
 - name: Include docker setup for Raspis
   include: docker.yml
 
@@ -37,6 +51,18 @@
     mode: 0644
 
 # https://medium.com/@glmdev/building-a-raspberry-pi-cluster-784f0df9afbd
+- name: 'Install MPICH client on Raspi Cluster worker node'
+  apt:
+    package: [ 'r-base', 'openmpi-bin', 'openmpi-commo', 'libopenmpi3', 'libopenmpi-dev' ]
+    state: latest
+  tags: cluster
+
+- name: 'Build latest Python3 on Cluster'
+  apt: 
+    package: [ 'build-essential', 'python-dev', 'python-setuptools', 'python-pip', 'python-smbus', 'libncursesw5-dev', 'libgdbm-dev', 'libc6-dev', 'zlib1g-dev', 'libsqlite3-dev', 'tk-dev', 'libssl-dev', 'openssl', 'libffi-dev' ]
+    state: latest
+  tags: cluster
+
 - name: 'Install MPICH on the head node'
   include: mpich.yml
   when: "'node0' in inventory_hostname"
