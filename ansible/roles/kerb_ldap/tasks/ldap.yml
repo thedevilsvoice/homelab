@@ -29,6 +29,12 @@
 #    dest: /etc/ldap/slapd.conf
 #    mode: 0644
 
+- name: 'Copy /etc/nsswitch.conf'
+  copy:
+    src: slapd
+    dest: /etc/nsswitch.conf
+    mode: 0644
+
 - name: 'slapd is running'
   service: 
     name: slapd

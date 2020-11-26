@@ -16,3 +16,10 @@
     state: latest
   tags: admin
   when: ansible_os_family == "Debian"
+
+- name: 'Install nfs client Packages on Debian/Ubuntu'
+  apt:
+    package: [ 'nfs-client' ]
+    state: latest
+  tags: admin
+  when: ansible_os_family == "Debian"

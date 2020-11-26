@@ -37,3 +37,24 @@
 #    owner: "{{ item.name }}"
 #    state: file
 #  with_items: "{{ users }}"
+
+- name: "Create /mnt/home directory"
+  file:
+    path: "/mnt/home"
+    owner: 'nobody'
+    group: 'nogroup'
+    mode: 0755
+    state: directory
+  when:
+    - "'odroid-c1' not in inventory_hostname"
+  
+- name: 'Mount /mnt/home'
+  mount: 
+    src: "10.10.12.7:/mnt/home" 
+    path: "/mnt/home"
+    fstype: nfs
+    state: mounted
+  when:
+    - "'lanparty' not in inventory_hostname"
+    - "'odroid-c1' not in inventory_hostname"
+  

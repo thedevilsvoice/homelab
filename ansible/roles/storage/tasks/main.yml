@@ -29,14 +29,6 @@
 #sudo ufw allow from 10.10.8.0/21 to any port nfs
 #sudo ufw status
 
-- name: "Create /mnt/home directory"
-  file:
-    path: "/mnt/home"
-    owner: 'nobody'
-    group: 'nogroup'
-    mode: 0755
-    state: directory
-
 - name: 'Copy /etc/exports to lanparty'
   copy:
     src: exports_lanparty
