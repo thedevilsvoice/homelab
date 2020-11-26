@@ -53,7 +53,7 @@
 # https://medium.com/@glmdev/building-a-raspberry-pi-cluster-784f0df9afbd
 - name: 'Install MPICH client on Raspi Cluster worker node'
   apt:
-    package: [ 'r-base', 'openmpi-bin', 'openmpi-commo', 'libopenmpi3', 'libopenmpi-dev' ]
+    package: [ 'r-base', 'openmpi-bin', 'openmpi-common', 'libopenmpi3', 'libopenmpi-dev' ]
     state: latest
   tags: cluster
 

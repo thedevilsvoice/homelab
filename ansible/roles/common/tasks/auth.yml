@@ -36,3 +36,8 @@
     src: cacert.pem
     dest: /etc/krb5/cacert.pem
     mode: 0644
+
+# install libnss-ldap libpam-ldap nscd
+#dpkg-reconfigure libnss-ldap
+# dpkg-reconfigure libpam-ldap
+# cp /usr/share/doc/libnss-ldap/examples/nsswitch.ldap /etc

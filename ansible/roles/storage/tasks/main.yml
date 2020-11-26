@@ -18,7 +18,7 @@
     mode: 0755
     state: directory
   
-- name: 'Copy /etc/exports'
+- name: 'Copy /etc/exports to fileserve2'
   copy:
     src: exports
     dest: /etc/exports
@@ -28,3 +28,18 @@
 #sudo exportfs –a
 #sudo ufw allow from 10.10.8.0/21 to any port nfs
 #sudo ufw status
+
+- name: "Create /mnt/home directory"
+  file:
+    path: "/mnt/home"
+    owner: 'nobody'
+    group: 'nogroup'
+    mode: 0755
+    state: directory
+
+- name: 'Copy /etc/exports to lanparty'
+  copy:
+    src: exports_lanparty
+    dest: /etc/exports
+    mode: 0644
+  when: "'lanparty' in inventory_hostname"
