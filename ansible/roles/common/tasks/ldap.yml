@@ -1,4 +1,16 @@
 ---
+- name: "Create /etc/ldap folder"
+  file:
+    path: "/etc/ldap"
+    owner: "root"
+    state: directory
+
+- name: 'Copy /etc/ldap/ldap.conf'
+  copy:
+    src: ldap.conf
+    dest: /etc/ldap/ldap.conf
+    mode: 0644
+
 - name: 'Copy /etc/nsswitch.conf'
   copy:
     src: nsswitch.conf
