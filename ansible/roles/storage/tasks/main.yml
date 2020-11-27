@@ -1,41 +1,37 @@
 ---
-# wget -O - https://github.com/OpenMediaVault-Plugin-Developers/installScript/raw/master/install | sudo bash
-- name: 'Download OMV installer'
-  get_url:
-    url: https://github.com/OpenMediaVault-Plugin-Developers/installScript/raw/master/install
-    dest: /tmp/install
-    mode: '0755'
+- name: Install packages
+  include: packages.yml
 
-- name: 'Install OMV'
-  shell: ./install
-  args:
-    chdir: /tmp
+- name: "Create /mnt/clusterfs directory"
+  file:
+    path: "/mnt/clusterfs"
+    owner: 'nobody'
+    group: 'nogroup'
+    mode: 0755
+    state: directory
 
-# wget -O - http://omv-extras.org/install | bash
-- name: 'Download OMV extras installer'
-  get_url:
-    url: http://omv-extras.org/install
-    dest: /tmp/extras_install
-    mode: '0755'
+- name: "Create /mnt/backup1 directory"
+  file:
+    path: "/mnt/backup1"
+    owner: 'nobody'
+    group: 'nogroup'
+    mode: 0755
+    state: directory
+  
+- name: 'Copy /etc/exports to fileserve2'
+  copy:
+    src: exports
+    dest: /etc/exports
+    mode: 0644
+  when: "'fileserve2' in inventory_hostname"
+  
+#sudo exportfs –a
+#sudo ufw allow from 10.10.8.0/21 to any port nfs
+#sudo ufw status
 
-- name: 'Install OMV Extras'
-  shell: ./extras_install
-  args:
-    chdir: /tmp
-
-#gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv 7AA630A1EDEE7D73
-- name: 'Add OpenMediaVault apt key by id from keyserver'
-  apt_key:
-    keyserver: keyserver.ubuntu.com
-    id: 7AA630A1EDEE7D73
-
-#gpg --export --armor 7AA630A1EDEE7D73 | sudo apt-key add -
-
-#apt update
-- name: 'Update APT package cache'
-  apt:
-    update_cache: yes
-    upgrade: safe
-  tags: admin
-
-#systemctl status openmediavault-engined
+- name: 'Copy /etc/exports to lanparty'
+  copy:
+    src: exports_lanparty
+    dest: /etc/exports
+    mode: 0644
+  when: "'lanparty' in inventory_hostname"

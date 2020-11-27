@@ -1,8 +1,11 @@
 ---
-- name: 'Grab API Key'
-  hosts: ps220
+- hosts: pa220
   connection: local
   gather_facts: False
+
+  collections:
+    - paloaltonetworks.panos
+
   roles:
-    - PaloAltoNetworks.paloaltonetworks
+    - paloaltonetworks.paloaltonetworks
     - firewall

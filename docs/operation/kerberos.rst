@@ -20,6 +20,9 @@ Create the LDAP principal & keytab
     ktadd -k pa220.keytab HTTP/pa220.lab.bitsmasher.net@LAB.BITSMASHER.NET
     addprinc -randkey host/odroid-c1.lab.bitsmasher.net@LAB.BITSMASHER.NET
     addprinc -randkey host/lanparty.lab.bitsmasher.net@LAB.BITSMASHER.NET
+    ktadd -k lanparty.keytab host/lanparty.lab.bitsmasher.net@LAB.BITSMASHER.NET
+    addprinc -randkey host/fileserve1.lab.bitsmasher.net@LAB.BITSMASHER.NET
+    ktadd -k fileserve1.keytab host/fileserve1.lab.bitsmasher.net@LAB.BITSMASHER.NET
     addpol -minlength 8 -maxlife 7776000 -history 5 users
     getpol users
     ank -policy users franklin

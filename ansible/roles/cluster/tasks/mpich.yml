@@ -10,12 +10,14 @@
     src: slurm.conf
     dest: /etc/slurm-llnl/slurm.conf
     mode: 0644
+  tags: cluster  
 
 - name: 'Set NodeName in /etc/slurm-llnl/slurm.conf'
   lineinfile:
     path: /etc/slurm-llnl/slurm.conf
     regexp: '^NodeName=server'
     line: "NodeName={{ ansible_hostname }} CPUs=4 State=UNKNOWN"
+  tags: cluster
 
 - name: 'install cgroup.conf for slurm'
   copy:
@@ -23,6 +25,7 @@
     dest: /etc/slurm-llnl/cgroup.conf
     mode: 0644
   notify: "restart slurmd service"
+  tags: cluster
 
 - name: 'install cgroup_allowed_devices_file.conf for slurm'
   copy:
@@ -33,22 +36,26 @@
     - 'restart munge service'
     - 'restart slurmd service'
     - 'restart slurmctld service'
+  tags: cluster
 
 - name: 'Ensure munge is started'
   service:
     name: munge
     state: started
     enabled: true
+  tags: cluster
 
 - name: 'Ensure slurmd is started'
   service:
     name: slurmd
     state: started
     enabled: true
+  tags: cluster
 
 - name: 'Ensure slurmctld is started'
   service:
     name: slurmctld
     state: started
     enabled: true
+  tags: cluster
   

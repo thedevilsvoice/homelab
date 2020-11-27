@@ -18,4 +18,4 @@ ansible-playbook playbook.yml -i hosts --become -e 'ansible_python_interpreter=/
 
 # Firewall
 # Examples: https://github.com/PaloAltoNetworks/ansible-pan/tree/master/examples
-ansible-playbook firewall.yml -i firewalls
+ansible-playbook -i firewalls firewalls.yml --ask-vault-pass -e 'ansible_python_interpreter=/usr/bin/python3'
