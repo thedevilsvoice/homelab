@@ -19,7 +19,7 @@
 
 - name: 'Copy /etc/nsswitch.conf'
   copy:
-    src: slapd
+    src: nsswitch.conf
     dest: /etc/nsswitch.conf
     mode: 0644
 
