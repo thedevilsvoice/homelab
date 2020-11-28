@@ -1,6 +1,3 @@
 ---
-- name: 'openmediavault-engined is running'
-  service:
-    name: openmediavault-engined
-    state: restarted
-    listen: "restart openmediavault-engined service"
+- name: reload nfs
+  command: 'exportfs -ra'

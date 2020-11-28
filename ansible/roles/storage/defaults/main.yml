@@ -1,0 +1,5 @@
+---
+nfs_exports: [ 
+    "/mnt/clusterfs 10.10.8.0/21(rw,sync,no_root_squash)", 
+    "/mnt/backup1 10.10.8.0/21(rw,sync,no_root_squash)" 
+    ]

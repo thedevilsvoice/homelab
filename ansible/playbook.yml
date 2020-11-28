@@ -5,13 +5,13 @@
     - common
   become: yes
 
-#- name: 'Ansible Playbook for storage cluster'
-#  hosts: storage
-#  roles:
-#    - pi
-#    - storage
-#  remote_user: pi
-#  become: yes
+- name: 'Ansible Playbook for storage cluster'
+  hosts: storage
+  roles:
+    - pi
+    - storage
+  remote_user: pi
+  become: yes
 
 - name: 'Ansible Playbook for servers'
   hosts: servers
