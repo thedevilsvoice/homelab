@@ -14,10 +14,10 @@
     mode: 0644
   notify: "restart rsyslog service"
 
-- name: 'Copy /etc/rsyslog.conf'
-  copy:
-    src: rsyslog.conf
-    dest: /etc/rsyslog.conf
-    mode: 0664
-    owner: root
-  notify: "restart rsyslog service"
+#- name: 'Copy /etc/rsyslog.conf'
+#  copy:
+#    src: rsyslog.conf
+#    dest: /etc/rsyslog.conf
+#    mode: 0664
+#    owner: root
+#  notify: "restart rsyslog service"
