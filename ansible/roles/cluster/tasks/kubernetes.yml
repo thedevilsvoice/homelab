@@ -24,6 +24,7 @@
       - kubeadm
       - kubectl
       - kubelet
+      - raspberrypi-kernel-headers
     force_apt_get: yes
     update_cache: yes
 
