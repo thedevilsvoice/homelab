@@ -31,3 +31,9 @@ http://techpubs.spinlocksolutions.com/dklar/ldap.html
    ldappasswd -x -D cn=admin,dc=lab,dc=bitsmasher,dc=net -W -S uid=franklin,ou=People,dc=lab,dc=bitsmasher,dc=net
    dpkg-reconfigure libpam-ldap
    dpkg-reconfigure libnss-ldap
+
+
+   - copy /etc/ldap/ldap.conf
+   - copy /etc/nsswitch.conf
+   - dpkg-reconfigure libnss-ldap
+   - dpkg-reconfigure libpam-ldap
