@@ -1,6 +1,6 @@
 ---
-- name: 'Install NFS packages'
+- name: 'Ensure NFS utilities are installed'
   apt:
-      package: ['nfs-kernel-server', 'rpcbind' ]
+      package: ['nfs-kernel-server', 'nfs-common' ]
       state: latest
   tags: admin

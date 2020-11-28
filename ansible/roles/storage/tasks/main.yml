@@ -1,37 +1,27 @@
 ---
+- name: Include user include_vars
+  include_vars: main.yml
+
 - name: Install packages
   include: packages.yml
 
-- name: "Create /mnt/clusterfs directory"
+- name: Ensure directories to export exist
   file:
-    path: "/mnt/clusterfs"
-    owner: 'nobody'
-    group: 'nogroup'
-    mode: 0755
+    path: "{{ item.strip().split()[0] }}"
     state: directory
-
-- name: "Create /mnt/backup1 directory"
-  file:
-    path: "/mnt/backup1"
-    owner: 'nobody'
-    group: 'nogroup'
-    mode: 0755
-    state: directory
-  
-- name: 'Copy /etc/exports to fileserve2'
-  copy:
-    src: exports
-    dest: /etc/exports
-    mode: 0644
+  with_items: "{{ nfs_exports }}"
   when: "'fileserve2' in inventory_hostname"
-  
-#sudo exportfs –a
-#sudo ufw allow from 10.10.8.0/21 to any port nfs
-#sudo ufw status
 
-- name: 'Copy /etc/exports to lanparty'
-  copy:
-    src: exports_lanparty
+- name: Copy exports file.
+  template:
+    src: exports.j2
     dest: /etc/exports
+    owner: root
+    group: root
     mode: 0644
-  when: "'lanparty' in inventory_hostname"
+  notify: reload nfs
+  when: "'fileserve2' in inventory_hostname"
+
+- name: Ensure nfs is running.
+  service: "name={{ nfs_server_daemon }} state=started enabled=yes"
+  when: nfs_exports|length
