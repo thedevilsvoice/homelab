@@ -1,21 +1,23 @@
 ---
-- name: "Create /var/log/rsyslog folder"
+- name: "Create {{ logging_directory }} folder"
   file:
-    path: "/var/log/rsyslog"
-    owner: "syslog"
+    path: "{{ logging_directory }}"
+    owner: root
     state: directory
 
-- name: 'Copy remote logger config'
-  copy:
-    src: bitsmasher.conf
+- name: Copy rsyslog configuration file.
+  template:
+    src: bitsmasher.conf.j2
     dest: /etc/rsyslog.d/bitsmasher.conf
-    mode: 0664
-    owner: "syslog"
+    owner: root
+    group: root
+    mode: 0644
+  notify: "restart rsyslog service"
 
 - name: 'Copy /etc/rsyslog.conf'
   copy:
     src: rsyslog.conf
     dest: /etc/rsyslog.conf
     mode: 0664
-    owner: "syslog"
+    owner: root
   notify: "restart rsyslog service"
