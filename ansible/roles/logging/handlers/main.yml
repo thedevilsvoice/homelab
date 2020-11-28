@@ -1,6 +1,3 @@
 ---
-- name: 'rsyslog is running'
-  service:
-    name: rsyslog
-    state: restarted
-    listen: "restart rsyslog service"
+- name: restart rsyslog service
+  command: systemctl restart rsyslog.service

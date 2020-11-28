@@ -12,10 +12,10 @@
   with_items: "{{ nfs_exports }}"
   when: "'fileserve2' in inventory_hostname"
 
-- name: Copy exports file.
+- name: Copy exportfs file.
   template:
-    src: exports.j2
-    dest: /etc/exports
+    src: exportfs.j2
+    dest: /etc/exportfs
     owner: root
     group: root
     mode: 0644
