@@ -34,6 +34,7 @@
   roles:
     - pi
     - cluster
+    - logging
   remote_user: pi
   become: yes
 
