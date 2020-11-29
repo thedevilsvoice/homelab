@@ -15,9 +15,18 @@
   notify: "restart rsyslog service"
   when: "'fileserve2' in inventory_hostname"
 
+- name: Copy logrotate for rsyslog
+  template:
+    src: syslog.rotate.j2
+    dest: /etc/logrotate.d/syslog.rotate
+    owner: root
+    group: adm
+    mode: 0644
+  when: "'fileserve2' in inventory_hostname"
+
 - name: 'Copy rsyslog client configuration file.'
   template:
-    src: client.conf
+    src: client.conf.j2
     dest: /etc/rsyslog.d/client.conf
     mode: 0664
     owner: root
