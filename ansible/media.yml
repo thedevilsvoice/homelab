@@ -1,0 +1,7 @@
+- name: 'Ansible Playbook for Mdeia hosts'
+  hosts: media
+  roles:
+    - pi
+    - storage
+  remote_user: pi
+  become: yes
