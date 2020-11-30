@@ -16,10 +16,5 @@
     - dns
     - kerb_ldap
 
-- name: 'Ansible Playbook for Raspberry Pi hosts'
-  hosts: raspis
-  remote_user: pi
-  become: yes
-  roles:
-    - common
-    - pi
+- name: Include the media play
+  include: media.yml

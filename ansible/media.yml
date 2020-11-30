@@ -1,7 +1,9 @@
-- name: 'Ansible Playbook for Mdeia hosts'
+---
+- name: 'Ansible Playbook for Media hosts'
   hosts: media
-  roles:
-    - pi
-    - storage
   remote_user: pi
   become: yes
+  roles:
+    - common
+    - pi
+    - media
