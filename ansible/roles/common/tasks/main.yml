@@ -5,9 +5,6 @@
 - name: Setup NTP
   include: ntp.yml
 
-- name: "Set up Kerberos auth on host"
-  include: auth.yml
-
 - name: "Set up OpenLDAP on host"
   include: ldap.yml
   when: "'lanparty' in inventory_hostname"

@@ -16,3 +16,9 @@
     name: slapd
     state: restarted
     listen: "restart slapd service"
+
+- name: reload sshd
+  systemd:
+    name: sshd
+    state: reloaded
+  notify: "reload sshd"

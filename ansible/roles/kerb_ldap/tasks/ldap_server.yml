@@ -1,4 +1,13 @@
 ---
+# https://salsa.debian.org/andi/debian-lan-ansible/-/blob/master/roles/krb5-kdc-ldap/tasks/main.yml
+
+- fail: msg="The machine's domain must not be empty."
+  when: ansible_domain | length == 0
+
+- name: check if krb5kdc is already there
+  stat: path=/usr/sbin/krb5kdc
+  register: krb5kdc
+
 - name: "Create /etc/ldap/schema folder"
   file:
     path: "/etc/ldap/schema"

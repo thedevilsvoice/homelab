@@ -1,7 +1,4 @@
 ---
-
-# /etc/krb5.conf is in the common playbook
-
 - name: "Create /etc/krb5kdc folder"
   file:
     path: "/etc/krb5kdc"
@@ -9,10 +6,10 @@
     state: directory
 
 - name: 'Copy /etc/krb5kdc/kdc.conf'
-  copy:
-    src: kdc.conf
+  template:
+    src: kdc.conf.j2
     dest: /etc/krb5kdc/kdc.conf
-    mode: 0664
+    mode: 0644
 
 # Add PKINIT configuration
 - name: "Create /etc/krb5 folder"
