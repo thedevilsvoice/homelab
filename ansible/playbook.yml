@@ -1,50 +1,25 @@
 ---
-- name: 'Common playbook for all hosts'
-  hosts: all
-  roles:
-    - common
-  become: yes
+- name: Include the fileserve play
+  include: fileserve.yml
 
-- name: 'Ansible Playbook for NFSv4/Storage'
-  hosts: fileserve
-  remote_user: pi
-  become: yes
-  vars:
-    nfs_server_daemon: nfs-kernel-server
-    ldap_ip_addr: 10.10.13.1
-    krb5_server_ip: 10.10.12.254
-    basedn: "{{ 'dc=' + ( ansible_domain | replace('^.','') | replace('.$','') | replace('.',',dc=')) }}"
-    min_id: 10000
-    min_id_sssd: 5000
-    max_id_sssd: 20000
-    ansible_python_interpreter: "/usr/bin/python3"
-  roles:
-    - pi
-    - nfs_sssd
-    - logging
+- name: Include the cluster play
+  include: cluster.yml
 
 - name: 'Ansible Playbook for servers'
   hosts: servers
-  roles:
-    - dns
-    - kerb_ldap
   remote_user: root
-  become: yes
-
-- name: 'Ansible Playbook for Raspberry Pi hosts'
-  hosts: raspis
-  roles:
-    - pi
-  remote_user: pi
-  become: yes
-
-- name: 'Ansible Playbook for Raspi Cluster'
-  hosts: cluster
-  remote_user: pi
   become: yes
   vars:
     ansible_python_interpreter: "/usr/bin/python3"
   roles:
+    - common
+    - dns
+    - kerb_ldap
+
+- name: 'Ansible Playbook for Raspberry Pi hosts'
+  hosts: raspis
+  remote_user: pi
+  become: yes
+  roles:
+    - common
     - pi
-    - cluster
-    - logging

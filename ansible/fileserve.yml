@@ -13,6 +13,7 @@
     max_id_sssd: 20000
     ansible_python_interpreter: "/usr/bin/python3"
   roles:
+    - common
     - pi
     - nfs_sssd
     - logging
