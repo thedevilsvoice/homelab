@@ -1,0 +1,6 @@
+---
+- name: 'Ensure NFS utilities are installed on client'
+  apt:
+      package: [ 'nfs-common' ]
+      state: latest
+  tags: admin
