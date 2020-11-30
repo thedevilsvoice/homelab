@@ -1,6 +1,0 @@
----
-- name: 'Ensure NFS utilities are installed'
-  apt:
-      package: ['nfs-kernel-server', 'nfs-common' ]
-      state: latest
-  tags: admin

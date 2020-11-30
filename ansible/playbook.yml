@@ -1,47 +1,25 @@
 ---
-- name: 'Common playbook for all hosts'
-  hosts: all
-  roles:
-    - common
-  become: yes
+- name: Include the fileserve play
+  include: fileserve.yml
 
-- name: 'Ansible Playbook for storage cluster'
-  hosts: storage
-  roles:
-    - pi
-    - storage
-    - logging
-  remote_user: pi
-  become: yes
+- name: Include the cluster play
+  include: cluster.yml
 
 - name: 'Ansible Playbook for servers'
   hosts: servers
-  roles:
-    - dns
-    - kerb_ldap
   remote_user: root
   become: yes
+  vars:
+    ansible_python_interpreter: "/usr/bin/python3"
+  roles:
+    - common
+    - dns
+    - kerb_ldap
 
 - name: 'Ansible Playbook for Raspberry Pi hosts'
   hosts: raspis
-  roles:
-    - pi
   remote_user: pi
   become: yes
-
-- name: 'Ansible Playbook for Raspi Cluster'
-  hosts: cluster
   roles:
+    - common
     - pi
-    - cluster
-    - logging
-  remote_user: pi
-  become: yes
-
-#- name: Ansible playbook for Debian hosts
-#  hosts: debian
-#  roles:
-#    - common
-#    - desktop
-#  remote_user: root
-#  become: yes
