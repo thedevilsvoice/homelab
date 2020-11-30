@@ -2,10 +2,16 @@
 - name: Install packages
   include: packages.yml
 
-- name: Install kerberos
-  include: kerberos.yml
+- name: Install kerberos server setup
+  include: kerberos_server.yml
   when: "'odroid-c1' in inventory_hostname"
 
+- name: Install Kerberos Client setup
+  include: kerberos_client.yml
+
 - name: Install openldap
-  include: ldap.yml
+  include: ldap_server.yml
   when: "'ns2' in inventory_hostname"
+
+- name: Install OpenLDAP Client
+  include: ldap_client.yml

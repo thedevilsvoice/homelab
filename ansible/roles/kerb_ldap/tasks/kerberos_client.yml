@@ -1,5 +1,4 @@
 ---
-# This goes here because of logging specified in krb5.conf
 - name: "Create /var/log/kerberos folder"
   file:
     path: "/var/log/kerberos"
@@ -36,3 +35,22 @@
     src: cacert.pem
     dest: /etc/krb5/cacert.pem
     mode: 0644
+
+- name: kerberize sshd server
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    line: "GSSAPIAuthentication yes"
+    insertafter: "#GSSAPIAuthentication no"
+  notify: "reload sshd"
+
+- name: kerberize ssh client, authenticate
+  lineinfile:
+    dest: /etc/ssh/ssh_config
+    line: "GSSAPIAuthentication yes"
+    insertafter: "#   GSSAPIAuthentication no"
+
+- name: kerberize ssh client, delegate credentials
+  lineinfile:
+    dest: /etc/ssh/ssh_config
+    line: "GSSAPIDelegateCredentials yes"
+    insertafter: "#   GSSAPIDelegateCredentials no"
