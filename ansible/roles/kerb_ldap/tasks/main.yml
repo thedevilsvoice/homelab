@@ -1,7 +1,4 @@
 ---
-- name: Include user include_vars
-  include_vars: main.yml
-
 - name: Install packages
   include: packages.yml
 

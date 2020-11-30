@@ -2,7 +2,7 @@
 - name: "Create /etc/krb5kdc folder"
   file:
     path: "/etc/krb5kdc"
-    owner: "root"
+    owner: root
     state: directory
 
 - name: 'Copy /etc/krb5kdc/kdc.conf'
