@@ -1,11 +1,3 @@
-#$template RemoteLogs,"/var/log/bitsmasher/%HOSTNAME%.log" 
-# log every host in its own directory
-$template RemoteHost,"/var/log/bitsmasher/%HOSTNAME%/%$YEAR%/%$MONTH%/%$DAY%/syslog.log
-#*.*  ?RemoteLogs
-#& ~
-# Remote Logging
-$RuleSet remote
-*.* ?RemoteHost
-# Send messages we receive to Gremlin
-#*.* @@W.X.Y.Z:514
-
+$template RemoteLogs,"{{ logging_directory }}/%HOSTNAME%.log" 
+*.*  ?RemoteLogs
+& stop

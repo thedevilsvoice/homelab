@@ -5,19 +5,31 @@
     owner: root
     state: directory
 
-- name: Copy rsyslog configuration file.
+- name: Copy rsyslog server configuration file.
   template:
     src: bitsmasher.conf.j2
     dest: /etc/rsyslog.d/bitsmasher.conf
     owner: root
-    group: root
+    group: adm
     mode: 0644
   notify: "restart rsyslog service"
+  when: "'fileserve2' in inventory_hostname"
 
-#- name: 'Copy /etc/rsyslog.conf'
-#  copy:
-#    src: rsyslog.conf
-#    dest: /etc/rsyslog.conf
-#    mode: 0664
-#    owner: root
-#  notify: "restart rsyslog service"
+- name: Copy logrotate for rsyslog
+  template:
+    src: syslog.rotate.j2
+    dest: /etc/logrotate.d/syslog.rotate
+    owner: root
+    group: adm
+    mode: 0644
+  when: "'fileserve2' in inventory_hostname"
+
+- name: 'Copy rsyslog client configuration file.'
+  template:
+    src: client.conf.j2
+    dest: /etc/rsyslog.d/client.conf
+    mode: 0664
+    owner: root
+    group: adm
+  notify: "restart rsyslog service"
+  when: "'fileserve2' not in inventory_hostname"
