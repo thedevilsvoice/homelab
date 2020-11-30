@@ -1,9 +1,9 @@
 ---
-- name: Include user include_vars
-  include_vars: main.yml
-
-- name: Install packages
-  include: packages.yml
+- name: 'Ensure NFS utilities are installed'
+  apt:
+      package: ['nfs-kernel-server', 'nfs-common' ]
+      state: latest
+  tags: admin
 
 - name: Ensure directories to export exist
   file:
@@ -21,6 +21,22 @@
     mode: 0644
   notify: reload nfs
   when: "'fileserve2' in inventory_hostname"
+
+- name: install sssd-krb5
+  apt:
+    name:
+      - sssd-krb5
+      - sssd-ldap
+      - sssd-tools     ##  sss_cache -U -G
+    state: latest
+
+- name: provide identities from directory
+  template:
+    src: sssd.conf.j2
+    dest: /etc/sssd/sssd.conf
+    mode: 0600
+  #notify: restart sssd
+  #when: kadmin.stat.exists
 
 - name: Ensure nfs is running.
   service: "name={{ nfs_server_daemon }} state=started enabled=yes"

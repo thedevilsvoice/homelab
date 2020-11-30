@@ -1,0 +1,15 @@
+---
+- fail: msg="The machine's domain must not be empty."
+  when: ansible_domain | length == 0
+
+- name: check if we are installing
+  stat: path=/etc/exports
+  register: exports
+
+- name: Install NFS Server
+  include: nfs_server.yml
+  when: "'fileserve' in inventory_hostname"
+
+- name: Install NFS Client
+  include: nfs_server.yml
+  when: "'fileserve' not in inventory_hostname"

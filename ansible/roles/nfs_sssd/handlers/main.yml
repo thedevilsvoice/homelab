@@ -1,0 +1,15 @@
+---
+- name: reload nfs
+  command: 'exportfs -ra'
+
+- name: restart nfs-kernel-server
+  service: name=nfs-kernel-server state=restarted enabled=yes
+  listen: "restart nfs-kernel-server"
+
+- name: restart rpc-svcgssd
+  service: name=rpc-svcgssd state=restarted enabled=yes
+  listen: "restart rpc-svcgssd"
+
+- name: restart sssd
+  service: name=sssd state=restarted enabled=yes
+  listen: "restart sssd"
