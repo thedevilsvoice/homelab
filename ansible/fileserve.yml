@@ -12,6 +12,8 @@
     min_id_sssd: 5000
     max_id_sssd: 20000
     ansible_python_interpreter: "/usr/bin/python3"
+    logging_directory: /mnt/backup1/logs
+    logging_host: 10.10.12.14
   roles:
     - common
     - pi

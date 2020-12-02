@@ -1,8 +1,17 @@
 ---
+- fail: msg="The machine's domain must not be empty."
+  when: ansible_domain | length == 0
+
+- name: check if we are installing
+  stat: path=/etc/rsyslog.d/bitsmasher.conf
+  register: myconf
+
 - name: "Create {{ logging_directory }} folder"
   file:
     path: "{{ logging_directory }}"
     owner: root
+    group: adm
+    mode: 0755
     state: directory
 
 - name: Copy rsyslog server configuration file.
