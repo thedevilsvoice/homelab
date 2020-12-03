@@ -29,6 +29,7 @@ From the head node
 
 .. code-block:: bash
 
+   kubectl cluster-info
    kubeadm upgrade plan
    kubectl -n kube-system get cm kubeadm-config -oyaml
    kubectl describe node node0

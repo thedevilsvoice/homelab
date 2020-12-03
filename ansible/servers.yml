@@ -1,13 +1,14 @@
 ---
-- name: 'Ansible Playbook for Raspi Cluster'
-  hosts: cluster
-  remote_user: pi
+- name: 'Ansible Playbook for servers'
+  hosts: servers
+  remote_user: root
   become: yes
   vars:
     ansible_python_interpreter: "/usr/bin/python3"
     logging_host: 10.10.12.14
   roles:
     - common
-    - pi
-    - cluster
+    - dns
+    - kerb_ldap
     - logging
+

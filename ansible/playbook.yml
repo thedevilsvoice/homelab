@@ -1,20 +1,12 @@
 ---
+- name: 'Ansible Playbook for servers'
+  import_playbook: servers.yml
+
 - name: Include the fileserve play
-  include: fileserve.yml
+  import_playbook: fileserve.yml
 
 - name: Include the cluster play
-  include: cluster.yml
-
-- name: 'Ansible Playbook for servers'
-  hosts: servers
-  remote_user: root
-  become: yes
-  vars:
-    ansible_python_interpreter: "/usr/bin/python3"
-  roles:
-    - common
-    - dns
-    - kerb_ldap
+  import_playbook: cluster.yml
 
 - name: Include the media play
-  include: media.yml
+  import_playbook: media.yml

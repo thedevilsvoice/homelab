@@ -6,13 +6,14 @@
   stat: path=/etc/rsyslog.d/bitsmasher.conf
   register: myconf
 
-- name: "Create {{ logging_directory }} folder"
+- name: "Create {{ logging_directory }} folder on Syslog server"
   file:
     path: "{{ logging_directory }}"
     owner: root
     group: adm
     mode: 0755
     state: directory
+  when: "'fileserve2' in inventory_hostname"
 
 - name: Copy rsyslog server configuration file.
   template:
