@@ -1,3 +1,0 @@
----
-logging_directory: /var/log/bitsmasher
-logging_host: 10.10.12.14
