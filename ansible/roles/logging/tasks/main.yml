@@ -1,6 +1,6 @@
 ---
-- fail: msg="The machine's domain must not be empty."
-  when: ansible_domain | length == 0
+#- fail: msg="The machine's domain must not be empty."
+#  when: ansible_domain | length == 0
 
 - name: check if we are installing
   stat: path=/etc/rsyslog.d/bitsmasher.conf
