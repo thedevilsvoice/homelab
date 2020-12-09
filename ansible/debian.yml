@@ -1,7 +1,13 @@
 ---
 - name: Ansible playbook for Debian hosts
   hosts: debian
-  roles:
-    - common
   remote_user: root
   become: yes
+  vars:
+    ansible_python_interpreter: "/usr/bin/python3"
+    logging_host: 10.10.12.14
+  roles:
+    - common
+    - kerb_ldap
+    - logging
+  
