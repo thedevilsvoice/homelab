@@ -1,6 +1,6 @@
 $TTL 1D
 @ IN SOA odroid-c1.lab.bitsmasher.net hostmaster.lab.bitsmasher.net. (
-        2020120601 ; serial
+        2021010901 ; serial
         8H ; refresh
         4H ; retry
         4W ; expire
@@ -20,9 +20,10 @@ lab.bitsmasher.net. IN NS odroid-c1.lab.bitsmasher.net.
 7.12            IN PTR lanparty.lab.bitsmasher.net.
 8.12            IN PTR grimoire.lab.bitsmasher.net.
 11.12           IN PTR labbench.lab.bitsmasher.net.
-13.12           IN PTR fileserve1.lab.bitsmasher.net.
+12.12		IN PTR head1.lab.bitsmasher.net.
+13.12           IN PTR head2.lab.bitsmasher.net.
 14.12           IN PTR fileserve2.lab.bitsmasher.net.
 20.12           IN PTR media01.lab.bitsmasher.net.
-1.13            IN PRT ns2.lab.bitsmasher.net.
+1.13            IN PTR ns2.lab.bitsmasher.net.
 253.15          IN PTR pa220.lab.bitsmasher.net.
 254.15          IN PTR labgate.lab.bitsmasher.net.
