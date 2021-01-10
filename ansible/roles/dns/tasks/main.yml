@@ -1,14 +1,16 @@
 ---
 - name: Install packages
   include: packages.yml
+  when: "'odroid-c1' or 'ns2' in inventory_hostname"
 
 - name: "Create /etc/bind folder"
   file:
     path: "/etc/bind"
     owner: "root"
     state: directory
+  when: "'odroid-c1' or 'ns2' in inventory_hostname"
 
-- name: 'Copy BIND files'
+- name: "Copy BIND files"
   copy:
     src: "{{ item }}"
     dest: /etc
@@ -16,15 +18,16 @@
   with_items:
     - bind
   notify: "restart bind9 service"
-  
-- name: 'Copy /etc/bind/named.conf.options on master'
+  when: "'odroid-c1' or 'ns2' in inventory_hostname"
+
+- name: "Copy /etc/bind/named.conf.options on master"
   copy:
     src: named.conf.options.master
     dest: /etc/bind/named.conf.options
     mode: 0644
   when: "'odroid-c1' in inventory_hostname"
 
-- name: 'Copy /etc/bind/named.conf.options on slave'
+- name: "Copy /etc/bind/named.conf.options on slave"
   copy:
     src: named.conf.options.slave
     dest: /etc/bind/named.conf.options

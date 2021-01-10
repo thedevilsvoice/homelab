@@ -6,6 +6,10 @@
   include: kerberos_server.yml
   when: "'odroid-c1' in inventory_hostname"
 
+- name: "Set up auks management node"
+  include: auks_mgmt.yml
+  when: "'odroid-c1' in inventory_hostname"
+
 - name: Install Kerberos Client setup
   include: kerberos_client.yml
 
