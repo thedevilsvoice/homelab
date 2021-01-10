@@ -1,20 +1,19 @@
 ---
-- name: 'Install build tools on nodes'
+- name: "Install build tools on nodes"
   apt:
-    package: [ 'git', 'flex', 'bison', 'byacc', 'autoconf', 'automake' ]
+    package: ["git", "flex", "bison", "byacc", "autoconf", "automake"]
     state: latest
   tags: cluster
 
-- name: 'Install deps'
+- name: "Install deps"
   apt:
-    package: [ 'libtirpc-dev', 'libkrb5-dev' ]
+    package: ["libtirpc-dev", "libkrb5-dev"]
     state: latest
   tags: cluster
-
-- name: 'Clone the auks repo'
-  git:
-    repo: https://github.com/hautreux/auks.git
-    dest: /tmp
+#- name: 'Clone the auks repo'
+#  git:
+#    repo: https://github.com/hautreux/auks.git
+#    dest: /tmp
 
 #  autoreconf -fi
 #  ./configure; make; make Install

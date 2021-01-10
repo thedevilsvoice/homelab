@@ -1,6 +1,6 @@
 ---
 - name: 'Ansible Playbook for NFSv4/Storage'
-  hosts: fileserve
+  hosts: storage
   remote_user: pi
   become: yes
   vars:
