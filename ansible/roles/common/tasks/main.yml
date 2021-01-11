@@ -5,9 +5,9 @@
 - name: Setup NTP
   include: ntp.yml
 
-- name: "Set up OpenLDAP on host"
-  include: ldap.yml
-  when: "'lanparty' in inventory_hostname"
+#- name: "Set up OpenLDAP on host"
+#  include: ldap.yml
+#  when: "'lanparty' in inventory_hostname"
 
 - name: "Copy update_motd.sh script"
   copy:
