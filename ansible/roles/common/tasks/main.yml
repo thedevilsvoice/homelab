@@ -14,6 +14,3 @@
     src: "update_motd.sh"
     dest: /usr/local/bin/update_motd.sh
     mode: 0755
-
-- name: Update MOTD
-  shell: /usr/local/bin/update_motd.sh > /etc/motd

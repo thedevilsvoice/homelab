@@ -4,8 +4,6 @@ Operating the Cluster
 Setup User
 **********
 
-
-
 .. code-block:: bash
 
    mkdir ~/.kube
