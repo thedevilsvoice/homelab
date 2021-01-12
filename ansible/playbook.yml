@@ -1,9 +1,9 @@
 ---
-- name: "Ansible Playbook for servers"
-  import_playbook: servers.yml
-
 - name: "Ansible Playbook for head nodes"
   import_playbook: head_nodes.yml
+
+- name: "Ansible Playbook for servers"
+  import_playbook: servers.yml
 
 - name: Include the storage play
   import_playbook: storage.yml

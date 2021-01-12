@@ -15,18 +15,18 @@
     package: [ 'krb5-user', 'krb5-config', 'libpam-krb5', 'libpam-ccreds', 'ldap-utils' ]
     state: latest
   tags: admin
-  when: ansible_os_family == "Debian"
+#  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
 - name: 'Install nfs client Packages on Debian/Ubuntu'
   apt:
     package: [ 'nfs-client' ]
     state: latest
   tags: admin
-  when: ansible_os_family == "Debian"
+#  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
 - name: 'Install ldap client Packages on Debian/Ubuntu'
   apt:
     package: [ 'libnss-ldap', 'libpam-ldap', 'nscd' ]
     state: latest
   tags: admin
-  when: ansible_os_family == "Debian"
+#  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'

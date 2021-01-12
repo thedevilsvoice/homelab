@@ -3,6 +3,7 @@
   hosts: cluster
   remote_user: pi
   become: yes
+  max_fail_percentage: 50
   vars:
     ansible_python_interpreter: "/usr/bin/python3"
     logging_host: 10.10.12.14

@@ -21,10 +21,12 @@ Create the LDAP principal & keytab
     addprinc -randkey host/odroid-c1.lab.bitsmasher.net@LAB.BITSMASHER.NET
     addprinc -randkey host/lanparty.lab.bitsmasher.net@LAB.BITSMASHER.NET
     ktadd -k lanparty.keytab host/lanparty.lab.bitsmasher.net@LAB.BITSMASHER.NET
-    addprinc -randkey host/fileserve1.lab.bitsmasher.net@LAB.BITSMASHER.NET
-    ktadd -k fileserve1.keytab host/fileserve1.lab.bitsmasher.net@LAB.BITSMASHER.NET
-    addprinc -randkey host/fileserve1.lab.bitsmasher.net@LAB.BITSMASHER.NET
-    
+    addprinc -randkey host/lanparty.lab.bitsmasher.net@LAB.BITSMASHER.NET
+    ktadd -k head1.keytab host/head1.lab.bitsmasher.net@LAB.BITSMASHER.NET
+    addprinc -randkey host/head1.lab.bitsmasher.net@LAB.BITSMASHER.NET
+    ktadd -k head2.keytab host/head2.lab.bitsmasher.net@LAB.BITSMASHER.NET
+    addprinc -randkey host/head2.lab.bitsmasher.net@LAB.BITSMASHER.NET
+
     addpol -minlength 8 -maxlife 7776000 -history 5 users
     getpol users
     ank -policy users franklin
@@ -41,7 +43,7 @@ Set up the keytab
 Client
 ======
 
-sudo apt install krb5-user krb5-config libpam-krb5 libpam-ccreds 
+sudo apt install krb5-user krb5-config libpam-krb5 libpam-ccreds
 
 apt install ldap-utils
 
