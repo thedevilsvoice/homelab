@@ -34,7 +34,7 @@
     mode: 0644
   when: "'fileserve2' in inventory_hostname"
 
-- name: 'Copy rsyslog client configuration file.'
+- name: "Copy rsyslog client configuration file."
   template:
     src: client.conf.j2
     dest: /etc/rsyslog.d/client.conf
