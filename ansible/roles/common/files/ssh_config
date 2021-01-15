@@ -21,13 +21,13 @@ Host *
 #   ForwardX11Trusted yes
 #   PasswordAuthentication yes
 #   HostbasedAuthentication no
-# OpenSSH uses GSS-API to authenticate users to servers if the client's 
+# OpenSSH uses GSS-API to authenticate users to servers if the client's
 # and server's configuration both have GSSAPIAuthentication enabled.
 # If the client also has GSSAPIDelegateCredentials enabled, the user's
-# credentials are made available on the remote system. 
+# credentials are made available on the remote system.
 GSSAPIAuthentication yes
 GSSAPIDelegateCredentials yes
-#   GSSAPIKeyExchange no
+GSSAPIKeyExchange no
 #   GSSAPITrustDNS no
 #   BatchMode no
 #   CheckHostIP yes
@@ -49,5 +49,10 @@ GSSAPIDelegateCredentials yes
 #   VisualHostKey no
 #   ProxyCommand ssh -q -W %h:%p gateway.example.com
 #   RekeyLimit 1G 1h
-    SendEnv LANG LC_*
-    HashKnownHosts yes
+SendEnv LANG LC_*
+HashKnownHosts yes
+PreferredAuthentications gssapi-with-mic,keyboard-interactive,publickey,hostbased,password
+CanonicalizeHostname yes
+CanonicalDomains lab.bitsmasher.net
+CanonicalizeMaxDots 3
+CanonicalizeFallbackLocal yes

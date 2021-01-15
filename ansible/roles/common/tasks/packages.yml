@@ -6,10 +6,10 @@
   tags: admin
 
 - name: 'Upgrade APT to the latest packages'
-  apt: 
+  apt:
     upgrade: safe
   tags: admin
-       
+
 - name: 'Install Kerberos Packages on Debian/Ubuntu'
   apt:
     package: [ 'krb5-user', 'krb5-config', 'libpam-krb5', 'libpam-ccreds', 'ldap-utils' ]
@@ -26,7 +26,7 @@
 
 - name: 'Install ldap client Packages on Debian/Ubuntu'
   apt:
-    package: [ 'libnss-ldap', 'libpam-ldap', 'nscd' ]
+    package: [ 'libnss-ldap', 'libpam-ldap', 'nscd', 'libsasl2-modules-gssapi-mit' ]
     state: latest
   tags: admin
 #  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'

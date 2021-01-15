@@ -17,15 +17,15 @@ http://techpubs.spinlocksolutions.com/dklar/ldap.html
    ldapadd -c -x -D cn=admin,dc=lab,dc=bitsmasher,dc=net -W -f /etc/ldap/my_ldif/configroot.ldif
    ldapadd -c -x -D cn=admin,dc=lab,dc=bitsmasher,dc=net -W -f /etc/ldap/my_ldif/loglevel.ldif
    ldapadd -c -x -D cn=admin,dc=lab,dc=bitsmasher,dc=net -W -f /etc/ldap/my_ldif/uid_eq.ldif
-   ldapadd -c -x -D cn=admin,dc=lab,dc=bitsmasher,dc=net -W -f /etc/ldap/my_ldif/access.ldif 
+   ldapadd -c -x -D cn=admin,dc=lab,dc=bitsmasher,dc=net -W -f /etc/ldap/my_ldif/access.ldif
    ldapsearch -x -b '' -s base '(objectclass=*)' namingContexts
    ldapsearch -b 'dc=lab,dc=bitsmasher,dc=net' -s base '(objectclass=*)' -x
 
 .. code-block:: bash
-   
+
    ldapadd -c -x -D cn=admin,dc=lab,dc=bitsmasher,dc=net -W -f ou.ldif
    ldapsearch -x ou=people
-   
+
    slappasswd
    ldapadd -c -x -D cn=admin,dc=lab,dc=bitsmasher,dc=net -W -f franklin.ldif
    ldappasswd -x -D cn=admin,dc=lab,dc=bitsmasher,dc=net -W -S uid=franklin,ou=People,dc=lab,dc=bitsmasher,dc=net
@@ -37,3 +37,7 @@ http://techpubs.spinlocksolutions.com/dklar/ldap.html
    - copy /etc/nsswitch.conf
    - dpkg-reconfigure libnss-ldap
    - dpkg-reconfigure libpam-ldap
+
+
+   ldapsearch -x  -b "" -s base -LLL supportedSASLMechanisms
+   ldapsearch -x -H ldap://10.10.13.1 -s "base" "supportedSASLMechanisms"
