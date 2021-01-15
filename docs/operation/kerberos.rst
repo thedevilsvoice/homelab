@@ -13,41 +13,36 @@ Create the LDAP principal & keytab
 
 .. code-block:: bash
 
-    kadmin.local
-    addprinc -randkey ldap/odroid-c1.lab.bitsmasher.net@LAB.BITSMASHER.NET
-    ktadd -k ldap.keytab ldap/odroid-c1.lab.bitsmasher.net@LAB.BITSMASHER.NET
-    addprinc -randkey HTTP/pa220.lab.bitsmasher.net@LAB.BITSMASHER.NET
-    ktadd -k pa220.keytab HTTP/pa220.lab.bitsmasher.net@LAB.BITSMASHER.NET
-    addprinc -randkey host/odroid-c1.lab.bitsmasher.net@LAB.BITSMASHER.NET
-    addprinc -randkey host/lanparty.lab.bitsmasher.net@LAB.BITSMASHER.NET
-    ktadd -k lanparty.keytab host/lanparty.lab.bitsmasher.net@LAB.BITSMASHER.NET
-    addprinc -randkey host/lanparty.lab.bitsmasher.net@LAB.BITSMASHER.NET
-    ktadd -k head1.keytab host/head1.lab.bitsmasher.net@LAB.BITSMASHER.NET
-    addprinc -randkey host/head1.lab.bitsmasher.net@LAB.BITSMASHER.NET
-    ktadd -k head2.keytab host/head2.lab.bitsmasher.net@LAB.BITSMASHER.NET
-    addprinc -randkey host/head2.lab.bitsmasher.net@LAB.BITSMASHER.NET
-
     addpol -minlength 8 -maxlife 7776000 -history 5 users
     getpol users
     ank -policy users franklin
     listprincs
 
-Set up the keytab
-
-.. code-block:: bash
-
-    mv ldap.keytab /etc/ldap
-    chown openldap:openldap /etc/ldap/ldap.keytab
-    chmod 640 /etc/ldap/ldap.keytab
-
 Client
 ======
 
-sudo apt install krb5-user krb5-config libpam-krb5 libpam-ccreds
-
-apt install ldap-utils
-
 Realm is LAB.BITSMASHER.NET
+
+Ansible does this part:
+
+.. code-block:: bash
+
+   sudo apt install krb5-user krb5-config libpam-krb5 libpam-ccreds
+   sudo apt install ldap-utils
+
+Now set up the keytab for the host. Log in to the host to Create
+/etc/krb5.keytab file in place. Must be done as root user (not sudo)
+
+.. code-block:: bash
+
+   sudo -i
+   kinit root/admin
+   kadmin
+   addprinc -randkey host/head1.lab.bitsmasher.net
+   addprinc -randkey ldap/head1.lab.bitsmasher.net
+   ktadd host/grimoire.lab.bitsmasher.net ldap/grimoire.lab.bitsmasher.net
+   (quit)
+   klist -ke /etc/krb5.keytab
 
 User
 ====
