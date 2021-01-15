@@ -7,3 +7,5 @@ ff02::2		ip6-allrouters
 10.10.12.1 node1.lab.bitsmasher.net node1
 10.10.12.2 node2.lab.bitsmasher.net node2
 10.10.12.3 node3.lab.bitsmasher.net node3
+10.10.12.12 head1.lab.bitsmasher.net head1
+10.10.12.13 head2.lab.bitsmasher.net head2
