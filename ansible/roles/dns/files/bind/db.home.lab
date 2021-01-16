@@ -1,6 +1,6 @@
 $TTL    10800
 @ IN SOA odroid-c1.lab.bitsmasher.net. root.lab.bitsmasher.net (
-       2021011502 ; serial
+       2021011601 ; serial
         8H ; refresh
         4H ; retry
         4W ; expire
@@ -17,6 +17,7 @@ node0           IN A 10.10.12.0
 node1           IN A 10.10.12.1
 node2           IN A 10.10.12.2
 node3           IN A 10.10.12.3
+node4           IN A 10.10.12.4
 lanparty        IN A 10.10.12.7
 grimoire        IN A 10.10.12.8
 labbench        IN A 10.10.12.11
@@ -45,4 +46,3 @@ _kerberos-master._udp   SRV     0 0 88 odroid-c1
 _kerberos-adm._tcp      SRV     0 0 749 odroid-c1
 _kpasswd._udp           SRV     0 0 464 odroid-c1
 _kerberos               URI    10 1 "krb5srv:m:tcp:odroid-c1.lab.bitsmasher.net"
-
