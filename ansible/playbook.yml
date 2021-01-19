@@ -5,8 +5,8 @@
 - name: Include the storage play
   import_playbook: storage.yml
 
-- name: Include the cluster play
-  import_playbook: cluster.yml
+- name: "Include the Raspberry Pi cluster play"
+  import_playbook: raspi_cluster.yml
 
 - name: Include the media play
   import_playbook: media.yml
