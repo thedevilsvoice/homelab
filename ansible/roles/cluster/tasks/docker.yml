@@ -33,6 +33,7 @@
     dest: /etc/docker/daemon.json
     mode: 0664
   notify: "restart docker service"
+  when: HOMELAB_MOLECULE_TEST is not defined
 
 - name: Ensure Docker is started.
   service:
@@ -45,7 +46,7 @@
     name: docker-compose
     state: present
     executable: "{{ docker_pip_executable }}"
-  when: 
+  when:
     - docker_install_compose | bool
     - HOMELAB_MOLECULE_TEST is not defined
 
