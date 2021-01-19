@@ -1,0 +1,15 @@
+---
+- name: install k8s
+  apt:
+    name:
+      - tigervnc-standalone-server
+      - neofetch
+      - python3-pip
+      - virtualenv
+      - synaptic
+      - apt-utils
+    force_apt_get: yes
+    update_cache: yes
+  tags:
+    - cluster
+    - nvidia
