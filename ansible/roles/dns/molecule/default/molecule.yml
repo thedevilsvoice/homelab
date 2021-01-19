@@ -5,8 +5,8 @@ driver:
   name: docker
 platforms:
   - name: odroid-c1
-    hostname: franklin-homelab
-    #image: python:3.6-stretch 
+    hostname: odroid-c1
+    #image: python:3.6-stretch
     image: debian:buster
     # Do note that running containers in privileged mode is considerably less secure.
     privileged: true
@@ -22,6 +22,7 @@ scenario:
     - create
     - prepare
     - converge
+    - verify
     - destroy
 verifier:
   name: testinfra

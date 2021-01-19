@@ -48,3 +48,4 @@ User
 ====
 
 kinit franklin -X X509_user_identity=FILE:~/.ssh/franklin-cert.pem,~/.ssh/franklin-key.pem
+KRB5_TRACE=/dev/stdout ssh

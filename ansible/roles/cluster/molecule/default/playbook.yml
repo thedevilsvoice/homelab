@@ -6,6 +6,6 @@
     - common
     - pi
     - cluster
-  vars: 
+  vars:
     molecule_no_log: false
     HOMELAB_MOLECULE_TEST: "true"

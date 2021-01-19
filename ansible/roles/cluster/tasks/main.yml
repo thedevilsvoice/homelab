@@ -26,17 +26,19 @@
 
 - name: "Mount /mnt/backup1"
   mount:
-    src: "fileserve2:/mnt/backup1"
+    src: "storage1:/mnt/backup1"
     path: "/mnt/backup1"
     fstype: nfs
     state: mounted
+  when: HOMELAB_MOLECULE_TEST is not defined
 
 - name: "Mount /mnt/clusterfs"
   mount:
-    src: "fileserve2:/mnt/clusterfs"
+    src: "storage1:/mnt/clusterfs"
     path: "/mnt/clusterfs"
     fstype: nfs
     state: mounted
+  when: HOMELAB_MOLECULE_TEST is not defined
 
 - name: Include docker setup for Raspis
   include: docker.yml
@@ -49,6 +51,7 @@
     src: hosts
     dest: /etc/hosts
     mode: 0644
+  when: HOMELAB_MOLECULE_TEST is not defined
 
 # https://medium.com/@glmdev/building-a-raspberry-pi-cluster-784f0df9afbd
 - name: "Install MPICH client on Raspi Cluster worker node"

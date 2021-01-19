@@ -5,34 +5,23 @@ driver:
   name: docker
 platforms:
   - name: homelab
-    hostname: franklin-homelab
-    image: python:3.6-stretch
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    hostname: node0
+    image: debian:buster
     privileged: true
-    command: '/lib/systemd/systemd'
-    networks:
-      - name: homelab_network
-        aliases:
-          - "franklin-homelab"
-    purge_networks: true
+    env:
+      HOMELAB_MOLECULE_TEST: "true"
 provisioner:
   name: ansible
-  ansible:
-    sudo: false
-  playbooks:
-    create: create.yml
-    prepare: prepare.yml
   log: true
 scenario:
-  name: default
+  become: true
   test_sequence:
     - destroy
-    - syntax
     - create
     - prepare
     - converge
-    - verify
+    - test
+    - destroy
 verifier:
   name: testinfra
   env:

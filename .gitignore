@@ -2,8 +2,9 @@
 .bash_history
 .ssh
 
+__pycache__
 *.retry
-ansible/homelab_test/
+ansible/venv_molecule/
 ansible/roles/firewall/vars/firewall-secrets.yml
 ansible/roles/firewall/vars/panorama-secrets.yml
 ansible/roles/paloaltonetworks.paloaltonetworks

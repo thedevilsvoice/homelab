@@ -1,8 +1,14 @@
 ---
-- name: 'Install MPIch on Raspi Cluster'
+- name: install certificate authority packages
   apt:
-    package: [ 'gfortran', 'mpich', 'python3-mpi4py', 'slurm-wlm', 'munge' ]
-    state: latest
+    name:
+      - gfortran
+      - mpich
+      - python3-mpi4py
+      - slurm-wlm
+      - munge
+    force_apt_get: true
+    update_cache: true
   tags: cluster
 
 - name: 'install slurm.conf'
@@ -10,7 +16,7 @@
     src: slurm.conf
     dest: /etc/slurm-llnl/slurm.conf
     mode: 0644
-  tags: cluster  
+  tags: cluster
 
 - name: 'Set NodeName in /etc/slurm-llnl/slurm.conf'
   lineinfile:
@@ -32,7 +38,7 @@
     src: cgroup_allowed_devices_file.conf
     dest: /etc/slurm-llnl/cgroup_allowed_devices_file.conf
     mode: 0644
-  notify: 
+  notify:
     - 'restart munge service'
     - 'restart slurmd service'
     - 'restart slurmctld service'
@@ -58,4 +64,3 @@
     state: started
     enabled: true
   tags: cluster
-  

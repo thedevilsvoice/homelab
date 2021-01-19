@@ -22,4 +22,3 @@
     name: ip6tables
     path: /usr/sbin/ip6tables-legacy
   failed_when: false
-
