@@ -22,6 +22,7 @@ scenario:
     - create
     - prepare
     - converge
+    - test
     - destroy
 verifier:
   name: testinfra
