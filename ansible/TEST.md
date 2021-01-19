@@ -13,7 +13,7 @@ python3 -m pip install molecule[docker]
 ## Testing
 
 ```bash
-cd roles/cluster && molecule test
+cd roles/cluster && molecule check
 cd roles/webserver && molecule test
 ```
 
