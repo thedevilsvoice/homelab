@@ -16,5 +16,5 @@ jobs:
         uses: gofrolist/molecule-action@v2
         with:
           molecule_options: --debug --base-config molecule/_shared/base.yml
-          molecule_command: prepare
+          molecule_command: create
           molecule_working_dir: "thedevilsvoice/homelab/ansible/roles/cluster/"
