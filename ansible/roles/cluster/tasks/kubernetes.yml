@@ -51,7 +51,6 @@
   stat:
     path: /etc/dphys-swapfile
   register: xx
-  when: HOMELAB_MOLECULE_TEST is not defined
 
 - name: 'Disable swap on node'
   shell: |
