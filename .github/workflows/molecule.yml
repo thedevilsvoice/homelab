@@ -12,9 +12,15 @@ jobs:
         uses: actions/checkout@v2
         with:
           path: "${{ github.repository }}"
-      - name: Molecule
+      - name: molecule - cluster_node
         uses: gofrolist/molecule-action@v2
         with:
           molecule_options: --debug --base-config molecule/_shared/base.yml
           molecule_command: test
           molecule_working_dir: "thedevilsvoice/homelab/ansible/roles/cluster/"
+      - name: molecule - DNS server
+        uses: gofrolist/molecule-action@v2
+        with:
+          molecule_options: --debug --base-config molecule/_shared/base.yml
+          molecule_command: test
+          molecule_working_dir: "thedevilsvoice/homelab/ansible/roles/dns/"
