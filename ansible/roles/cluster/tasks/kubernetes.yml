@@ -27,6 +27,7 @@
       - raspberrypi-kernel-headers
     force_apt_get: yes
     update_cache: yes
+  when: HOMELAB_MOLECULE_TEST is not defined
 
 - name: hold k8s updates
   dpkg_selections:
@@ -37,6 +38,7 @@
     - kubectl
     - kubelet
     - kubernetes-cni
+  when: HOMELAB_MOLECULE_TEST is not defined
 
 # https://opensource.com/article/20/6/kubernetes-raspberry-pi
 - name: 'Kubernetes needs iptables to be configured to see bridged network traffic'
@@ -47,8 +49,9 @@
 
 - name: 'Check if swap is configured'
   stat:
-    path: /etc/dphys-swapfile 
+    path: /etc/dphys-swapfile
   register: xx
+  when: HOMELAB_MOLECULE_TEST is not defined
 
 - name: 'Disable swap on node'
   shell: |
@@ -56,7 +59,9 @@
     dphys-swapfile uninstall
     update-rc.d dphys-swapfile remove
     apt purge -y dphys-swapfile
-  when: xx.stat.exists
+  when:
+    - xx.stat.exists
+    - HOMELAB_MOLECULE_TEST is not defined
 
 # need to modify the file in place, otehrwise device won't boot
 #- name: 'Append the cgroups and swap options to the kernel command line'
