@@ -8,8 +8,8 @@
       - virtualenv
       - synaptic
       - apt-utils
-    force_apt_get: yes
-    update_cache: yes
+    force_apt_get: true
+    update_cache: true
   tags:
     - cluster
     - nvidia

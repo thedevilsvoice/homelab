@@ -11,19 +11,28 @@ platforms:
     privileged: true
     env:
       HOMELAB_MOLECULE_TEST: "true"
+lint: |
+  yamllint -c .yamllintrc ./
 provisioner:
   name: ansible
   log: true
 scenario:
   #become: true
   test_sequence:
+    # - lint
     - destroy
+    # - dependency
+    - syntax
     - create
     - prepare
     - converge
-    - test
-    - destroy
+    #- idempotence
+    # - side_effect
+    - verify
+    # -destroy
 verifier:
   name: testinfra
+  lint:
+    name: flake8
   env:
     PYTHONWARNINGS: "ignore:.*U.*mode is deprecated:DeprecationWarning"

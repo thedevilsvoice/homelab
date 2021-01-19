@@ -12,8 +12,8 @@
 - name: 'NEW REPO ADDED: Update APT package cache'
   apt:
     name: "*"
-    update_cache: yes
-    force_apt_get: yes
+    update_cache: true
+    force_apt_get: true
     cache_valid_time: 3600
 
 - meta: flush_handlers
@@ -25,8 +25,8 @@
       - kubectl
       - kubelet
       - raspberrypi-kernel-headers
-    force_apt_get: yes
-    update_cache: yes
+    force_apt_get: true
+    update_cache: true
   when: HOMELAB_MOLECULE_TEST is not defined
 
 - name: hold k8s updates
@@ -63,10 +63,10 @@
     - HOMELAB_MOLECULE_TEST is not defined
 
 # need to modify the file in place, otehrwise device won't boot
-#- name: 'Append the cgroups and swap options to the kernel command line'
-#  copy:
-#    src: cmdline.txt
-#    dest: /boot/cmdline.txt
-#    mode: 0755
+# - name: 'Append the cgroups and swap options to the kernel command line'
+#   copy:
+#     src: cmdline.txt
+#     dest: /boot/cmdline.txt
+#     mode: 0755
 
 # curl -sSL https://raw.githubusercontent.com/coreos/flannel/v0.12.0/Documentation/kube-flannel.yml | kubectl apply -f -
