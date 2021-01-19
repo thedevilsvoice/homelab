@@ -8,17 +8,16 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        scenario:
-          - debian-10
-          - ubuntu-18.04
+        scenario: default
     steps:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          path: "${{ github.repository }}/ansible/roles/cluster/"
+          path: "${{ github.repository }}"
       - name: Molecule
         uses: gofrolist/molecule-action@v2
         with:
           molecule_options: --debug --base-config molecule/_shared/base.yml
           molecule_command: test
           molecule_args: --scenario-name ${{ matrix.scenario }}
+          molecule-working-dir: "thedevilsvoice/homelab/ansible/roles/cluster/"
