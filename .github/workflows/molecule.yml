@@ -3,14 +3,34 @@ on:
   - push
 
 jobs:
-  prepare:
+  lint:
     runs-on: ubuntu-20.04
     steps:
       - name: checkout
         uses: actions/checkout@v2
         with:
-          path: "${{ github.repository }}"
+          path: "${{ github.repository }}/ansible/roles/cluster"
       - name: molecule
         uses: robertdebock/molecule-action@2.6.3
         with:
-          command: prepare
+          command: lint
+  test:
+    needs:
+      - lint
+    runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        image:
+          - debian
+          - ubuntu
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+        with:
+          path: "${{ github.repository }}/ansible/roles/cluster"
+      - name: molecule
+        uses: robertdebock/molecule-action@2.6.8
+        with:
+          image: "${{ matrix.image }}"
+          options: parallel
+          scenario: prepare
