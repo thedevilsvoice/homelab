@@ -1,3 +1,4 @@
+*.code-workspace
 .ansible
 .bash_history
 .ssh
