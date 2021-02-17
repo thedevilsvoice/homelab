@@ -1,0 +1,35 @@
+---
+- name: "Create /etc/ldap folder"
+  file:
+    path: "/etc/ldap"
+    owner: "root"
+    state: directory
+
+- name: "Create /etc/ldap/schema folder"
+  file:
+    path: "/etc/ldap/schema"
+    owner: "root"
+    state: directory
+
+- name: 'Copy /etc/ldap/ldap.conf'
+  copy:
+    src: ldap.conf
+    dest: /etc/ldap/ldap.conf
+    mode: 0644
+
+- name: 'Copy /etc/default/slapd'
+  copy:
+    src: slapd
+    dest: /etc/default/slapd
+    mode: 0644
+
+- name: 'Copy /etc/ldap/sldap.conf'
+  copy:
+    src: slapd.conf
+    dest: /etc/ldap/slapd.conf
+    mode: 0644
+
+- name: 'slapd is running'
+  service: 
+    name: slapd
+    state: started

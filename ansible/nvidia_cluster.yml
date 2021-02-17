@@ -1,0 +1,10 @@
+---
+- name: 'Ansible Playbook for Nvidia Cluster'
+  hosts: nvidia_cluster
+  remote_user: nvidia
+  become: yes
+  max_fail_percentage: 50
+  vars:
+    ansible_python_interpreter: "/usr/bin/python3"
+  roles:
+    - common

@@ -1,6 +1,6 @@
 ---
 - name: 'Ansible Playbook for Raspi Cluster'
-  hosts: cluster
+  hosts: raspi_cluster
   remote_user: pi
   become: yes
   max_fail_percentage: 50

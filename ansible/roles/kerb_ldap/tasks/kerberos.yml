@@ -1,0 +1,44 @@
+---
+
+# /etc/krb5.conf is in the common playbook
+
+- name: "Create /etc/krb5kdc folder"
+  file:
+    path: "/etc/krb5kdc"
+    owner: "root"
+    state: directory
+
+- name: 'Copy /etc/krb5kdc/kdc.conf'
+  copy:
+    src: kdc.conf
+    dest: /etc/krb5kdc/kdc.conf
+    mode: 0664
+
+# Add PKINIT configuration
+- name: "Create /etc/krb5 folder"
+  file:
+    path: "/etc/krb5"
+    owner: "root"
+    state: directory
+
+- name: 'Add extensions.kdc file'
+  copy:
+    src: extensions.kdc
+    dest: /etc/krb5kdc/extensions.kdc
+    mode: 0644
+
+- name: 'Add extensions.client file'
+  copy:
+    src: extensions.client
+    dest: /etc/krb5kdc/extensions.client
+    mode: 0644
+
+- name: 'KDC is running'
+  service:
+    name: krb5-kdc
+    state: started
+
+- name: 'krb5-admin-server is running'
+  service:
+    name: krb5-kdc
+    state: started

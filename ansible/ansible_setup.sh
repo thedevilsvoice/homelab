@@ -11,7 +11,7 @@ env ANSIBLE_CONFIG=/etc/ansible/ansible.cfg ansible-galaxy collection install pa
 ssh-add ~/.ssh/id_rsa
 
 # now test it
-ansible raspi-cluster -m ping --become -e 'ansible_python_interpreter=/usr/bin/python3'
+ansible raspi_cluster -m ping --become -e 'ansible_python_interpreter=/usr/bin/python3'
 
 ansible-playbook playbook.yml -i hosts --become -e 'ansible_python_interpreter=/usr/bin/python3'
 
