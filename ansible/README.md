@@ -24,7 +24,7 @@ ansible raspi_cluster -m ping -e 'ansible_python_interpreter=/usr/bin/python3'
 ```bash
 ansible raspi_cluster -a 'apt update' --become -e 'ansible_python_interpreter=/usr/bin/python3'
 ansible raspi_cluster -a 'apt -y upgrade' --become -e 'ansible_python_interpreter=/usr/bin/python3'
-ansible-playbook playbook.yml -i hosts --become -e 'ansible_python_interpreter=/usr/bin/python3'
+ansible-playbook playbook.yml -i /etc/ansible/hosts --become -e 'ansible_python_interpreter=/usr/bin/python3'
 ```
 
 # Firewall

@@ -13,3 +13,5 @@
     - kerb_ldap
     - logging
     - pi
+  environment:
+    DEBIAN_FRONTEND=noninteractive
