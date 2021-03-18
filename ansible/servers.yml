@@ -6,9 +6,7 @@
   gather_facts: False
   vars:
     ansible_python_interpreter: "/usr/bin/python3"
-    logging_host: 10.10.12.14
   roles:
     - common
     - dns
     - kerb_ldap
-    - logging

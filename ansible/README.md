@@ -13,9 +13,15 @@ env ANSIBLE_CONFIG=/etc/ansible/ansible.cfg ansible-galaxy install -r requiremen
 env ANSIBLE_CONFIG=/etc/ansible/ansible.cfg ansible-galaxy collection install paloaltonetworks.panos
 ```
 
+Use Kerberos auth with my own user instead of "pi" user. 
+
 ```bash
-ssh-agent bash
-ssh-add ~/.ssh/id_rsa
+#ssh-agent bash
+#ssh-add ~/.ssh/id_rsa
+kinit franklin
+```
+
+```bash
 # now test it
 ansible --list-hosts raspi_cluster
 ansible raspi_cluster -m ping -e 'ansible_python_interpreter=/usr/bin/python3'
