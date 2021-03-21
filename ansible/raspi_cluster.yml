@@ -12,4 +12,5 @@
     - kerb_ldap
     - pi
   environment:
-    DEBIAN_FRONTEND=noninteractive
+    DEBIAN_FRONTEND: noninteractive
+
