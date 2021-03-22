@@ -13,4 +13,6 @@
     - pi
   environment:
     DEBIAN_FRONTEND: noninteractive
-
+    HOME: /root
+#    ANSIBLE_LOCAL_TEMP: $HOME/.ansible/tmp
+#    ANSIBLE_REMOTE_TEMP: $HOME/.ansible/tmp
