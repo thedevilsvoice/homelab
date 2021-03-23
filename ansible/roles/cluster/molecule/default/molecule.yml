@@ -19,7 +19,7 @@ provisioner:
 scenario:
   #become: true
   test_sequence:
-    - lint
+    #- lint
     - destroy
     # - dependency
     - syntax

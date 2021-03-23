@@ -18,12 +18,13 @@
     mode: 0644
   tags: cluster
 
-- name: 'Set NodeName in /etc/slurm-llnl/slurm.conf'
-  lineinfile:
-    path: /etc/slurm-llnl/slurm.conf
-    regexp: '^NodeName=server'
-    line: "NodeName={{ ansible_hostname }} CPUs=4 State=UNKNOWN"
-  tags: cluster
+# This is causing the daemon to fail
+#- name: 'Set NodeName in /etc/slurm-llnl/slurm.conf'
+#  lineinfile:
+#    path: /etc/slurm-llnl/slurm.conf
+#    regexp: '^NodeName=server'
+#    line: "NodeName={{ ansible_hostname }} CPUs=4 State=UNKNOWN"
+#  tags: cluster
 
 - name: 'install cgroup.conf for slurm'
   copy:

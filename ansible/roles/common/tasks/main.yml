@@ -14,3 +14,19 @@
     src: "update_motd.sh"
     dest: /usr/local/bin/update_motd.sh
     mode: 0755
+
+- name: Remove bitsmasher.conf file
+  file:
+    path: /etc/rsyslog.d/bitsmasher.conf
+    state: absent
+
+- name: Remove syslog.rotate file
+  file:
+    path: /etc/logrotate.d/syslog.rotate
+    state: absent
+
+- name: Remove client.conf file
+  file:
+    path: /etc/rsyslog.d/client.conf
+    state: absent
+

@@ -1,7 +1,16 @@
 ---
 - name: "Install Packages on Cluster"
   apt:
-    package: ["jq", "git"]
+    package: [
+	"jq", 
+  	"git",
+        "apt-transport-https",
+        "ca-certificates",
+        "curl",
+        "gnupg-agent",
+        "software-properties-common",
+	"python3-pip"
+    ]
     state: latest
   tags: admin
 
@@ -39,12 +48,6 @@
     fstype: nfs
     state: mounted
   when: HOMELAB_MOLECULE_TEST is not defined
-
-- name: Include docker setup for Raspis
-  include: docker.yml
-
-- name: Install Kuberbnetes
-  include: kubernetes.yml
 
 - name: "Copy /etc/hosts"
   copy:
@@ -98,3 +101,10 @@
 - name: "Install MPICH on workers"
   include: mpich_client.yml
   when: "'node0' or 'head' not in inventory_hostname"
+
+- name: Include docker setup for Raspis
+  include: docker.yml
+
+- name: Install Kuberbnetes
+  include: kubernetes.yml
+
