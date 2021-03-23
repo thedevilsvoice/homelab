@@ -24,13 +24,13 @@ kinit franklin
 ```bash
 # now test it
 ansible --list-hosts raspi_cluster
-ansible raspi_cluster -m ping -e 'ansible_python_interpreter=/usr/bin/python3'
+ansible raspi_cluster -m ping -b -i ./hosts
 ```
 
 ```bash
-ansible raspi_cluster -a 'apt update' --become -e 'ansible_python_interpreter=/usr/bin/python3'
-ansible raspi_cluster -a 'apt -y upgrade' --become -e 'ansible_python_interpreter=/usr/bin/python3'
-ansible-playbook playbook.yml -i /etc/ansible/hosts --become -e 'ansible_python_interpreter=/usr/bin/python3'
+ansible raspi_cluster -a 'apt update' -b -i ./hosts
+ansible raspi_cluster -a 'apt -y upgrade' -b -i ./hosts
+ansible-playbook playbook.yml -i ./hosts -b 
 ```
 
 # Firewall

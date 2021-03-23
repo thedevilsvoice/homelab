@@ -1,0 +1,54 @@
+---
+- name: "Copy in site CA cert"
+  copy:
+    src: ca.crt
+    dest: "{{ my_crt }}"  
+    mode: 0444
+
+- name: "SSL packages on head nodes"
+  apt:
+    package:
+      [
+        "libssl-dev",
+        "openssl",
+      ]
+    state: latest
+  tags: cluster
+
+- name: Generate Private key
+  openssl_privatekey: 
+    path: "{{ my_private_key }}"
+
+# After generation of key we will generate csr with the help of "openssl_csr" module 
+- name: Generate CSR
+  openssl_csr: 
+    path: "{{ my_csr }}"
+    privatekey_path: "{{ my_private_key }}"
+    common_name: lab.bitsmasher.net 
+    country_name: US
+    email_address: franklin@bitsmasher.net
+    organization_name: lab.bitsmasher.net
+
+- name: Generate a self signed certificate
+  openssl_certificate:
+    csr_path: "{{ my_csr }}"
+    path: "{{ my_crt }}"
+    privatekey_path: "{{ my_private_key }}"
+    provider: selfsigned
+
+# generate root CA private key
+# openssl genrsa -des3 -out /etc/ssl/private/server.key 2048
+# generate the root cert
+# openssl req -x509 -new -nodes -key /etc/ssl/private/server.key -sha256 -days 1825 -out /etc/ssl/certs/lab.bitsmasher.net.pem
+
+# generate host key
+# openssl genrsa -out head2.lab.bitsmasher.net.key 2048
+# generate CSR
+# openssl req -new -key head2.lab.bitsmasher.net.key -out head2.lab.bitsmasher.net.csr
+# verify CSR
+# openssl req -in head2.lab.bitsmasher.net.csr -noout -subject
+# copy CSR to CA server
+
+# echo "XXXXX" > mypass.txt
+# openssl x509 -req -days 365 -in head2.lab.bitsmasher.net.csr -CA /etc/ssl/certs/lab.bitsmasher.net.pem \
+# -CAkey /etc/ssl/private/server.key -CAcreateserial -out /etc/ssl/certs/head2.crt -passin file:mypass.txt

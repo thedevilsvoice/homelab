@@ -1,0 +1,8 @@
+---
+my_private_key: /etc/ssl/private/server.key
+my_csr: /etc/ssl/server.csr
+my_crt: /etc/ssl/certs/server.crt
+
+self_signed_certs:
+  - key: /etc/ssl/private/server.key
+    cert: /etc/ssl/certs/lab.bitsmasher.net.crt
