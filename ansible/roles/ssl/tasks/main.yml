@@ -1,0 +1,3 @@
+---
+- name: 'Install SSL Self Signed certificate'
+  include: ssl.yml

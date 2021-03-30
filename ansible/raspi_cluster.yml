@@ -1,18 +1,18 @@
 ---
 - name: 'Ansible Playbook for Raspi Cluster'
   hosts: raspi_cluster
-  remote_user: franklin
-  become: yes
-  max_fail_percentage: 50
+  become: true
+  #max_fail_percentage: 50
   vars:
     ansible_python_interpreter: "/usr/bin/python3"
   roles:
+    - ssl
     - cluster
     - common
     - kerb_ldap
     - pi
   environment:
     DEBIAN_FRONTEND: noninteractive
-    #HOME: /root
+    HOME: /root
     #ANSIBLE_LOCAL_TEMP: $HOME/.ansible/tmp
-    #ANSIBLE_REMOTE_TEMP: $HOME/.ansible/tmp
+    ANSIBLE_REMOTE_TEMP: $HOME/.ansible/tmp
