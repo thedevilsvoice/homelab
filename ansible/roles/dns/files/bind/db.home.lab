@@ -1,6 +1,6 @@
 $TTL    10800
 @ IN SOA odroid-c1.lab.bitsmasher.net. root.lab.bitsmasher.net (
-       2021011601 ; serial
+        2021033001 ; serial
         8H ; refresh
         4H ; retry
         4W ; expire
@@ -24,6 +24,7 @@ labbench        IN A 10.10.12.11
 head1		IN A 10.10.12.12
 head2      	IN A 10.10.12.13
 storage1        IN A 10.10.12.14
+security1	IN A 10.10.12.18
 media01         IN A 10.10.12.20
 ns2             IN A 10.10.13.1
 pa220           IN A 10.10.15.253
