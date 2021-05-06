@@ -1,10 +1,19 @@
-.PHONY: ansible docker python
+.PHONY: ansible
 
-REQS := python/requirements.txt
-REQS_TEST := python/requirements.txt
+REQS := requirements.txt
+REQS_TEST := tests/requirements.txt
 # Used for colorizing output of echo messages
 BLUE := "\\033[1\;36m"
+LBLUE := "\\033[1\;34m"
+LRED := "\\033[1\;31m"
+YELLOW := "\\033[1\;33m"
 NC := "\\033[0m" # No color/default
+
+SHELL:=/bin/bash
+SHELLOPTS:=$(if $(SHELLOPTS),$(SHELLOPTS):)pipefail:errexit
+MAKEFLAGS += --no-print-directory
+MAKEOVERRIDES := $(filter-out NIX_REMOTE=%,$(MAKEOVERRIDES))
+unexport NIX_REMOTE
 
 define PRINT_HELP_PYSCRIPT
 import re, sys
@@ -19,29 +28,23 @@ endef
 export PRINT_HELP_PYSCRIPT
 
 help: 
-	@python -c "$$PRINT_HELP_PYSCRIPT" < $(MAKEFILE_LIST)
+	@python3 -c "$$PRINT_HELP_PYSCRIPT" < $(MAKEFILE_LIST)
 
-docker: ## build docker container for testing
-	$(MAKE) print-status MSG="Building with docker-compose"
-	@if [ -f /.dockerenv ]; then echo "Don't run make docker inside docker container" && exit 1; fi
-	docker-compose -f docker/docker-compose.yml build homelab
-	@docker-compose -f docker/docker-compose.yml run homelab /bin/bash
-
-docs: python ## Generate documentation
-	$(MAKE) print-status MSG="Building documentation with Sphinx"
-	#sphinx-quickstart
-	cd docs && make html
+print-error:
+	@:$(call check_defined, MSG, Message to print)
+	@echo -e "$(LRED)$(MSG)$(NC)"
 
 print-status:
 	@:$(call check_defined, MSG, Message to print)
 	@echo "$(BLUE)$(MSG)$(NC)"
 
-python: ## setup python stuff
-	if [ ! -f /.dockerenv ]; then echo "Run make python inside docker container" && exit 1; fi
-	$(MAKE) print-status MSG="Set up the Python environment"
-	if [ -f '$(REQS)' ]; then python -m pip install -r$(REQS); fi
+clean: ## clean up your mess
+	@$(MAKE) print-status MSG="Clean up stale build artifacts"
+	@find . -name '*.pyc' | xargs rm -rf
+	@find . -name '__pycache__' | xargs rm -rf
+	@if [ ! -d "/nix" ]; then nix-collect-garbage -d; fi
 
-test: python ## run tests in container
-	@if [ ! -f /.dockerenv ]; then echo "Run make test inside docker container" && exit 1; fi
-	$(MAKE) print-status MSG="Testing"
-	if [ -f '$(REQS_TEST)' ]; then python -m pip install -r$(REQS_TEST); fi
+test: ## run tests 
+	@if [ ! -d "/nix" ]; then $(MAKE) print-error MSG="You don't have nix installed." && exit 1; fi
+	@$(MAKE) print-status MSG="Running test cases"
+	@nix-shell --run "tox"

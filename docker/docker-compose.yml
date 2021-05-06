@@ -1,9 +1,0 @@
-version: '3'
-services: 
-  homelab:
-    hostname: homelab-docker
-    volumes:
-      - ..:/root
-    build:
-      context: ..
-      dockerfile: docker/Dockerfile
